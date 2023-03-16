@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="nui://game/ui/jquery.js" type="text/javascript"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="main.js" defer async></script>
+    <link rel="stylesheet" href="main.css">
+    <title>Iceberg Gangwars - Main</title>
+</head>
+<body>
+    <template id="notifytem">
+        <div class="notify">
+            <h2></h2>
+            <p></p>
+        </div>
+    </template>
+    <template id="logintem">
+        <div id="logindiv">
+            <iframe src="html/login.html" frameborder="0"></iframe>
+        </div>
+    </template>
+    <template id="mainmenutem">
+        <div id="mainmenudiv">
+            <iframe src="html/frakauswahl.html" frameborder="0"></iframe>
+        </div>
+    </template>
+    <template id="hudtem">
+        <div id="huddiv">
+            <div class="container">
+                <div class="element" id="id">ID: &nbsp<span>111</span></div>
+                <div class="element" id="kills">Kills: &nbsp<span>187</span></div>
+                <div class="element" id="deaths">Tode: &nbsp<span>69</span></div>
+                <div class="element" id="kd">K/D: &nbsp<span>2.69</span></div>
+                <div class="element" id="level">Level: &nbsp<span>5</span></div>
+            </div>
+        </div>
+    </template>
+    <template id="frakcreatortem">
+        <div id="frakcreatordiv">
+            <iframe src="frakcreator/index.html" frameborder="0"></iframe>
+        </div>
+    </template>
+    <div class="notifys"></div>
+</body>
+</html>
+<!-- page.classList.add("page")
+                document.querySelector("body").append(page)
+                document.querySelector('button').addEventListener('click', () => {
+                    console.log("hihihihi");
+                    fetch(`https://${GetParentResourceName()}/leaveNUI`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json; charset=UTF-8',
+                        }
+                    }).then(resp => resp.json()).then(resp => console.log(resp));
+                }) -->

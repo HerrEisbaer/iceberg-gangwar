@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js" defer></script>
+    <title>Iceberg Gangwar - HUD</title>
+</head>
+<body>
+    <section class="hudsec">
+        <div class="hud-container">
+            <div class="hud-element" id="hudid">ID: &nbsp<span>111</span></div>
+            <div class="hud-element" id="hudkills">Kills: &nbsp<span>187</span></div>
+            <div class="hud-element" id="huddeaths">Tode: &nbsp<span>69</span></div>
+            <div class="hud-element" id="hudkd">K/D: &nbsp<span>2.69</span></div>
+            <div class="hud-element" id="hudlevel">Level: &nbsp<span>5</span></div>
+        </div>
+        <div class="ammocount">
+            <p id="weapon">Advancedrifle</p>
+            <h2 id="ammo">30/30</h2>
+        </div>
+    </section>
+
+    <section class="notifysec">
+        <div class="notify-container"></div>
+    </section>
+
+    <section class="alertsec">
+        <div class="alert-container">
+            
+        </div>
+    </section>
+
+    <template id="alerttem">
+        <div class="alert">
+            <h2>Title</h2>
+            <p>Text</p>
+        </div>
+    </template>
+
+    <section class="progressbarsec"></section>
+
+    <template id="notifytem">
+        <div class="notify">
+            <h2>Title</h2>
+            <p>Text</p>
+        </div>
+    </template>
+</body>
+</html>

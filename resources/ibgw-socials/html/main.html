@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js" defer></script>
+    <title>Iceberg Gangwar - Socials</title>
+</head>
+<body>
+    <div class="allsocials-container">
+        <div class="overlay">
+            <div class="soboden">
+                <div class="wave"></div>
+                <div class="wave"></div>
+            </div>
+            <!-- <div class="wellenundso"></div> -->
+            <div class="buttonundso">
+                <button id="openfriend">Freunde</button>
+                <button id="openpartys">Partys</button>
+                <button id="openteams">Teams</button>
+            </div>
+            <div class="slider"></div>
+        </div>
+    </div>
+
+    <template id="friendstem">
+        <div class="friendscontainer">
+            <div class="ownfriends">
+                <h2>Meine Freunde</h2>
+                <div class="allfriends-container">
+                    <!-- <div class="friend">
+                        <img src="https://i.kym-cdn.com/photos/images/newsfeed/001/896/777/6b8.png">
+                        <h3>scufzz <span status="online"></span></h3>
+                        <p>Vagos</p>
+                        <svg class="freundesvg" version="1.0" xmlns="http://www.w3.org/2000/svg"
+                            width="32px" height="32px" viewBox="0 0 512.000000 512.000000"
+                            preserveAspectRatio="xMidYMid meet">
+
+                            <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                                fill="currentColor" stroke="none">
+                                <path d="M2909 4677 c-64 -24 -102 -53 -211 -165 -126 -127 -151 -172 -151
+                                -272 0 -124 -14 -106 601 -722 l557 -558 -1737 0 c-1722 0 -1738 0 -1792 -20
+                                -74 -28 -139 -98 -161 -174 -13 -45 -16 -91 -13 -224 3 -145 6 -173 25 -213
+                                25 -56 84 -118 138 -144 39 -20 75 -20 1793 -25 l1752 -5 -560 -560 c-617
+                                -617 -604 -601 -603 -722 1 -96 31 -148 165 -279 140 -138 176 -159 278 -159
+                                62 1 84 5 125 27 67 36 1953 1923 1981 1983 28 60 26 176 -5 236 -32 64 -1928
+                                1958 -1985 1984 -52 23 -151 29 -197 12z"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="friend">
+                        <img src="https://cdn-lfs.huggingface.co/repos/0a/d9/0ad91ac9c8b7dc7dcec9c5e24f442b136aba21640410e9aa43f360b0c36fd429/afcee4fdcfe1003025b8c6e9452455c29ef89737762ffd2faaaffb47eea26590?response-content-disposition=attachment%3B+filename*%3DUTF-8%27%27gigachad.png%3B+filename%3D%22gigachad.png%22%3B&Expires=1676137692&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZG4tbGZzLmh1Z2dpbmdmYWNlLmNvL3JlcG9zLzBhL2Q5LzBhZDkxYWM5YzhiN2RjN2RjZWM5YzVlMjRmNDQyYjEzNmFiYTIxNjQwNDEwZTlhYTQzZjM2MGIwYzM2ZmQ0MjkvYWZjZWU0ZmRjZmUxMDAzMDI1YjhjNmU5NDUyNDU1YzI5ZWY4OTczNzc2MmZmZDJmYWFhZmZiNDdlZWEyNjU5MD9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSoiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2NzYxMzc2OTJ9fX1dfQ__&Signature=SM26BC7tglbGKmNkQAfetivZO40WruQe0Bq5rUKGgfGIZZ1JNEr1Bh4iJJWkSlG9D8gPu0StzxKS%7EOcf-ICzdtYoT34HHJB67JwVEudSs-hCc%7EWzMNd51zRkOFx0dn0tPz7XEcCe71L%7EsfjDwlRm5WVvzrhsz1IwLmT0PBwQUgvyGiVFbNKkcCpSM7ppJVZrtRc6nB6J1T7V7-cUUSqTfHKmAGgJxbSadbiVlCyTsg03bPKx6YtC903N9%7E6uhHU8QVvZl-z15L%7E5bZgHsWKodrXJB%7EUbcR2IbwJyvVoFiYAnPVhG7TB5JwkwN26R6N3cIiuEaiKZSnCr%7Eoz8nSuj0w__&Key-Pair-Id=KVTP0A1DKRTAX">
+                        <h3>Gambomann <span status="party"></span></h3>
+                        <p>Vagos</p>
+                        <svg class="freundesvg" version="1.0" xmlns="http://www.w3.org/2000/svg"
+                        width="32px" height="32px" viewBox="0 0 512.000000 512.000000"
+                        preserveAspectRatio="xMidYMid meet">
+
+                        <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                            fill="currentColor" stroke="none">
+                            <path d="M2909 4677 c-64 -24 -102 -53 -211 -165 -126 -127 -151 -172 -151
+                            -272 0 -124 -14 -106 601 -722 l557 -558 -1737 0 c-1722 0 -1738 0 -1792 -20
+                            -74 -28 -139 -98 -161 -174 -13 -45 -16 -91 -13 -224 3 -145 6 -173 25 -213
+                            25 -56 84 -118 138 -144 39 -20 75 -20 1793 -25 l1752 -5 -560 -560 c-617
+                            -617 -604 -601 -603 -722 1 -96 31 -148 165 -279 140 -138 176 -159 278 -159
+                            62 1 84 5 125 27 67 36 1953 1923 1981 1983 28 60 26 176 -5 236 -32 64 -1928
+                            1958 -1985 1984 -52 23 -151 29 -197 12z"/>
+                        </g>
+                    </svg>
+                    </div>
+                    <div class="friend">
+                        <img src="https://essereuomo.it/wp-content/uploads/2021/10/sdsdsd.jpg">
+                        <h3>GZUZ <span status="notavailable"></span></h3>
+                        <p>Vagos</p>
+                        <svg class="freundesvg" version="1.0" xmlns="http://www.w3.org/2000/svg"
+                        width="32px" height="32px" viewBox="0 0 512.000000 512.000000"
+                        preserveAspectRatio="xMidYMid meet">
+
+                        <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                            fill="currentColor" stroke="none">
+                            <path d="M2909 4677 c-64 -24 -102 -53 -211 -165 -126 -127 -151 -172 -151
+                            -272 0 -124 -14 -106 601 -722 l557 -558 -1737 0 c-1722 0 -1738 0 -1792 -20
+                            -74 -28 -139 -98 -161 -174 -13 -45 -16 -91 -13 -224 3 -145 6 -173 25 -213
+                            25 -56 84 -118 138 -144 39 -20 75 -20 1793 -25 l1752 -5 -560 -560 c-617
+                            -617 -604 -601 -603 -722 1 -96 31 -148 165 -279 140 -138 176 -159 278 -159
+                            62 1 84 5 125 27 67 36 1953 1923 1981 1983 28 60 26 176 -5 236 -32 64 -1928
+                            1958 -1985 1984 -52 23 -151 29 -197 12z"/>
+                        </g>
+                    </svg>
+                    </div>
+                    <div class="friend">
+                        <img src="https://qph.cf2.quoracdn.net/main-qimg-b6eac2e20219908998a8adbe10508048-lq">
+                        <h3>187 <span status="offline"></span></h3>
+                        <p>Vagos</p>
+                        <svg class="freundesvg" version="1.0" xmlns="http://www.w3.org/2000/svg"
+                        width="32px" height="32px" viewBox="0 0 512.000000 512.000000"
+                        preserveAspectRatio="xMidYMid meet">
+
+                        <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                            fill="currentColor" stroke="none">
+                            <path d="M2909 4677 c-64 -24 -102 -53 -211 -165 -126 -127 -151 -172 -151
+                            -272 0 -124 -14 -106 601 -722 l557 -558 -1737 0 c-1722 0 -1738 0 -1792 -20
+                            -74 -28 -139 -98 -161 -174 -13 -45 -16 -91 -13 -224 3 -145 6 -173 25 -213
+                            25 -56 84 -118 138 -144 39 -20 75 -20 1793 -25 l1752 -5 -560 -560 c-617
+                            -617 -604 -601 -603 -722 1 -96 31 -148 165 -279 140 -138 176 -159 278 -159
+                            62 1 84 5 125 27 67 36 1953 1923 1981 1983 28 60 26 176 -5 236 -32 64 -1928
+                            1958 -1985 1984 -52 23 -151 29 -197 12z"/>
+                        </g>
+                    </svg>
+                    </div> -->
+                </div>
+            </div>
+            <div class="searchfriends">
+                <div class="searchcontainer">
+                    <input class="searchfriendsinput" type="text">
+                    <svg class="playersearchicon" version="1.0" xmlns="http://www.w3.org/2000/svg"
+                        width="32px" height="32px" viewBox="0 0 512.000000 512.000000"
+                        preserveAspectRatio="xMidYMid meet">
+    
+                        <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                        fill="currentColor" stroke="none">
+                        <path d="M1780 5105 c-444 -56 -864 -263 -1183 -582 -604 -603 -766 -1518
+                        -406 -2281 297 -631 891 -1067 1572 -1157 506 -66 1023 64 1437 361 49 35 93
+                        64 97 64 4 0 339 -331 743 -734 775 -775 776 -775 865 -776 44 0 131 36 157
+                        66 29 33 58 107 58 149 0 89 -1 90 -776 865 -403 404 -734 738 -734 742 0 4
+                        29 48 65 99 248 351 374 742 375 1166 0 548 -210 1055 -597 1440 -306 304
+                        -682 496 -1113 568 -136 23 -418 28 -560 10z m480 -430 c456 -74 845 -320
+                        1092 -692 184 -277 269 -554 270 -883 0 -159 -11 -255 -47 -400 -141 -563
+                        -592 -1014 -1155 -1155 -145 -36 -241 -47 -400 -47 -329 1 -606 86 -883 270
+                        -441 293 -707 790 -707 1325 0 268 55 494 180 736 202 391 562 682 995 807
+                        183 52 466 69 655 39z"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class="ergebnisse">
+                    <!-- <div class="ergebnissetzen">
+                        <h2>scufzziiiii <div class="role"><img src="icons/roles/owner.png">Owner</div><div class="role"><img src="icons/roles/crown.png">Platz #1</div><div class="role"><img src="icons/roles/team.png">Team</div></h2>
+                        <div class="playerdetails">
+                            <div class="schnell">
+                                <h3><u>Schnellaktionen</u></h3>
+                                <div class="actions">
+                                    <button id="addAsFriend">Freund hinzufügen</button>
+                                    <button id="addToParty">Zur Party hinzufügen</button>
+                                    <button id="inivteToTeam">In Team einladen</button>
+                                </div>
+                            </div>
+                            <div class="player-infos">
+                                <h3><u>Spielerstatistik</u></h3>
+                                <div class="playerstats">
+                                    <p><img src="icons/kills.png"> Kills: 1000</p>
+                                    <p><img src="icons/deaths.png"> Deaths: 10</p>
+                                    <p><img src="icons/kd.png"> K/D: 100</p>
+                                    <p><img src="icons/level.png"> Level: 5</p>
+                                </div>
+                            </div>
+                            <div class="team-info">
+                                <h3><u>Teaminformationen</u></h3>
+                                <div class="teaminfo">
+                                    <p>Name: <span class="teaminfoname">Healkeys (HLK)</span></p>
+                                    <p>Rang: <span class="teaminforang">Owner</span></p>
+                                    <p>Globale Platzierung: <span class="teaminfoplatz">#1</span></p>
+                                    <p>Member: 69</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="ergebnisauflistentem">
+        <div class="ergebnisauflisten">
+            <h2>Ergebnisse</h2>
+            <div class="alleergebnisselg">
+                <!-- <div class="player">
+                    <img src="https://i.kym-cdn.com/photos/images/newsfeed/001/896/777/6b8.png">
+                    <h3>scufzz <span status="online"></span></h3>
+                    <p>Vagos</p>
+                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                        width="32px" height="32px" viewBox="0 0 512.000000 512.000000"
+                        preserveAspectRatio="xMidYMid meet">
+
+                        <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                        fill="currentColor" stroke="none">
+                        <path d="M2320 5104 c-55 -23 -118 -92 -140 -152 -20 -52 -20 -80 -20 -1790
+                        l0 -1737 -557 557 c-618 617 -599 601 -725 601 -101 0 -150 -29 -284 -165
+                        -138 -140 -158 -176 -159 -278 0 -59 5 -85 24 -121 32 -63 1928 -1957 1986
+                        -1985 55 -26 175 -26 230 0 60 28 1947 1914 1983 1981 22 41 26 63 27 125 0
+                        102 -21 138 -159 278 -131 134 -183 164 -279 165 -121 1 -105 14 -722 -603
+                        l-560 -560 -5 1752 c-5 1718 -5 1754 -25 1793 -26 52 -87 112 -138 136 -37 16
+                        -67 19 -242 18 -156 0 -208 -3 -235 -15z"/>
+                        </g>
+                    </svg>
+                </div>
+                -->
+            </div>
+        </div>
+    </template>
+
+    <template id="playerergebnissuchetem">
+        <div class="player">
+            <img src="">
+            <h3><span status="online"></span></h3>
+            <p></p>
+            <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                width="32px" height="32px" viewBox="0 0 512.000000 512.000000"
+                preserveAspectRatio="xMidYMid meet">
+
+                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                fill="currentColor" stroke="none">
+                <path d="M2320 5104 c-55 -23 -118 -92 -140 -152 -20 -52 -20 -80 -20 -1790
+                l0 -1737 -557 557 c-618 617 -599 601 -725 601 -101 0 -150 -29 -284 -165
+                -138 -140 -158 -176 -159 -278 0 -59 5 -85 24 -121 32 -63 1928 -1957 1986
+                -1985 55 -26 175 -26 230 0 60 28 1947 1914 1983 1981 22 41 26 63 27 125 0
+                102 -21 138 -159 278 -131 134 -183 164 -279 165 -121 1 -105 14 -722 -603
+                l-560 -560 -5 1752 c-5 1718 -5 1754 -25 1793 -26 52 -87 112 -138 136 -37 16
+                -67 19 -242 18 -156 0 -208 -3 -235 -15z"/>
+                </g>
+            </svg>
+        </div>
+    </template>
+
+    <template id="ergebnissetzentem">
+        <div class="ergebnissetzen">
+            <h2></h2>
+            <div class="playerdetails">
+                <div class="schnell">
+                    <h3><u>Schnellaktionen</u></h3>
+                    <div class="actions">
+                        <button id="addAsFriend">Freund hinzufügen</button>
+                        <button id="addToParty">Zur Party hinzufügen</button>
+                        <button id="inivteToTeam">In Team einladen</button>
+                    </div>
+                </div>
+                <div class="player-infos">
+                    <h3><u>Spielerstatistik</u></h3>
+                    <div class="playerstats">
+                        <p data-kills><img src="icons/kills.png">Kills: </p>
+                        <p data-deaths><img src="icons/deaths.png">Deaths: </p>
+                        <p data-kd><img src="icons/kd.png">K/D: </p>
+                        <p data-level><img src="icons/level.png">Level:</p>
+                    </div>
+                </div>
+                <div class="team-info">
+                    <h3><u>Teaminformationen</u></h3>
+                    <div class="teaminfo">
+                        <p data-name>Name: <span class="teaminfoname"></span></p>
+                        <p data-rang>Rang: <span class="teaminforang"></span></p>
+                        <p data-platz>Globale Platzierung: <span class="teaminfoplatz"></span></p>
+                        <p data-member>Member: <span class="teaminfomember"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="roletem">
+        <div class="role"><img src=""></div>
+    </template>
+
+    <template id="friendtem">
+        <div class="friend">
+            <img>
+            <h3><span status=""></span></h3>
+            <p></p>
+            <svg class="freundesvg" version="1.0" xmlns="http://www.w3.org/2000/svg"
+                width="32px" height="32px" viewBox="0 0 512.000000 512.000000"
+                preserveAspectRatio="xMidYMid meet">
+
+                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                    fill="currentColor" stroke="none">
+                    <path d="M2909 4677 c-64 -24 -102 -53 -211 -165 -126 -127 -151 -172 -151
+                    -272 0 -124 -14 -106 601 -722 l557 -558 -1737 0 c-1722 0 -1738 0 -1792 -20
+                    -74 -28 -139 -98 -161 -174 -13 -45 -16 -91 -13 -224 3 -145 6 -173 25 -213
+                    25 -56 84 -118 138 -144 39 -20 75 -20 1793 -25 l1752 -5 -560 -560 c-617
+                    -617 -604 -601 -603 -722 1 -96 31 -148 165 -279 140 -138 176 -159 278 -159
+                    62 1 84 5 125 27 67 36 1953 1923 1981 1983 28 60 26 176 -5 236 -32 64 -1928
+                    1958 -1985 1984 -52 23 -151 29 -197 12z"/>
+                </g>
+            </svg>
+        </div>
+    </template>
+
+    <template id="partytem">
+        <div class="party-container">
+            <div class="input-ctn">
+                <input type="number" id="partyidinput" placeholder="Party ID" min="0">
+                <button id="partyidbtn">Beitreten</button>
+            </div>
+        </div>
+    </template>
+
+    <template id="partyinvitewarten">
+        <div class="partyinvitewartenctn">
+            <h2 class="wehkrankh2">Party Invite Ausstehend</h2>
+        </div>
+    </template>
+
+    <template id="onepartytem">
+        <div class="oneparty-ctn">
+            <div class="top-row">
+                <h2>Party von scufzziiiii</h2>
+                <svg class="leavepartysvg" version="1.0" xmlns="http://www.w3.org/2000/svg"
+                    width="26px" height="26px" viewBox="0 0 512.000000 512.000000"
+                    preserveAspectRatio="xMidYMid meet">
+    
+                    <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                    fill="currentColor" stroke="none">
+                        <path d="M325 5106 c-148 -37 -271 -159 -311 -310 -11 -42 -14 -384 -14 -2021
+                        0 -2157 -3 -2031 57 -2135 37 -62 111 -134 169 -163 27 -13 350 -125 719 -248
+                        l670 -224 90 0 c110 0 172 20 255 81 67 49 121 123 150 207 16 46 20 82 20
+                        202 l0 145 378 0 c285 0 393 4 443 14 207 44 391 223 444 431 22 87 22 1131 0
+                        1175 -32 62 -115 99 -183 81 -46 -13 -99 -65 -112 -112 -6 -20 -10 -242 -10
+                        -549 l0 -515 -24 -51 c-13 -27 -42 -66 -66 -87 -76 -65 -90 -67 -502 -67
+                        l-368 0 -2 1708 -3 1707 -31 66 c-70 147 -138 194 -420 288 l-209 70 701 0
+                        c779 1 753 3 834 -66 24 -21 53 -60 66 -87 l24 -51 0 -515 c0 -317 4 -529 10
+                        -552 14 -49 76 -104 129 -113 53 -9 126 25 158 74 l23 34 0 546 c0 602 0 606
+                        -63 731 -21 42 -59 92 -108 142 -61 63 -92 85 -160 117 -46 22 -111 44 -143
+                        50 -90 17 -2544 14 -2611 -3z m782 -527 c555 -185 666 -225 683 -246 20 -26
+                        20 -38 20 -1985 l0 -1960 -34 -34 c-23 -23 -43 -34 -63 -34 -27 0 -1294 417
+                        -1340 441 -11 6 -29 25 -38 43 -15 28 -16 191 -13 1982 3 1936 3 1952 23 1974
+                        22 25 50 38 80 39 11 1 318 -98 682 -220z"/>
+                        <path d="M4095 3826 c-41 -18 -83 -69 -91 -111 -16 -86 -14 -89 289 -392 l282
+                        -283 -840 0 -840 0 -39 -23 c-109 -61 -106 -221 5 -277 37 -19 62 -20 876 -20
+                        l838 0 -282 -282 c-304 -305 -305 -307 -288 -395 9 -49 69 -109 118 -118 91
+                        -17 77 -29 540 433 236 235 435 439 443 454 18 35 18 101 0 136 -23 42 -857
+                        870 -889 882 -38 14 -85 12 -122 -4z"/>
+                    </g>
+                </svg>
+            </div>
+            <div class="allpartymembers">
+                <div class="member">
+                    <img src="https://cdn.discordapp.com/avatars/859436564047331369/442e94d3631fac40b3c38aa64705243b.png?size=1024">
+                    <div class="text">
+                        <h3>Eisbörg</h3>
+                        <p>Vagos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="idtem">
+        <div class="member">
+            <img>
+            <h3>Eisbörg</h3>
+            <p>Vagos</p>
+        </div>
+    </template>
+
+    <template id="teamstem">
+        <img width="512px" height="512px" src="https://cdn-lfs.huggingface.co/repos/0a/d9/0ad91ac9c8b7dc7dcec9c5e24f442b136aba21640410e9aa43f360b0c36fd429/afcee4fdcfe1003025b8c6e9452455c29ef89737762ffd2faaaffb47eea26590?response-content-disposition=attachment%3B+filename*%3DUTF-8%27%27gigachad.png%3B+filename%3D%22gigachad.png%22%3B&Expires=1676137692&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZG4tbGZzLmh1Z2dpbmdmYWNlLmNvL3JlcG9zLzBhL2Q5LzBhZDkxYWM5YzhiN2RjN2RjZWM5YzVlMjRmNDQyYjEzNmFiYTIxNjQwNDEwZTlhYTQzZjM2MGIwYzM2ZmQ0MjkvYWZjZWU0ZmRjZmUxMDAzMDI1YjhjNmU5NDUyNDU1YzI5ZWY4OTczNzc2MmZmZDJmYWFhZmZiNDdlZWEyNjU5MD9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSoiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2NzYxMzc2OTJ9fX1dfQ__&Signature=SM26BC7tglbGKmNkQAfetivZO40WruQe0Bq5rUKGgfGIZZ1JNEr1Bh4iJJWkSlG9D8gPu0StzxKS%7EOcf-ICzdtYoT34HHJB67JwVEudSs-hCc%7EWzMNd51zRkOFx0dn0tPz7XEcCe71L%7EsfjDwlRm5WVvzrhsz1IwLmT0PBwQUgvyGiVFbNKkcCpSM7ppJVZrtRc6nB6J1T7V7-cUUSqTfHKmAGgJxbSadbiVlCyTsg03bPKx6YtC903N9%7E6uhHU8QVvZl-z15L%7E5bZgHsWKodrXJB%7EUbcR2IbwJyvVoFiYAnPVhG7TB5JwkwN26R6N3cIiuEaiKZSnCr%7Eoz8nSuj0w__&Key-Pair-Id=KVTP0A1DKRTAX">
+    </template>
+
+    <template id="overlaytem">
+        <div class="overlay">
+            <div class="soboden">
+                <div class="wave"></div>
+                <div class="wave"></div>
+            </div>
+            <div class="buttonundso">
+                <button id="openfriend">Freunde</button>
+                <button id="openpartys">Partys</button>
+                <button id="openteams">Teams</button>
+            </div>
+            <div class="slider"></div>
+        </div>
+    </template>
+</body>
+</html>

@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Schafter",
+        "spawnname": "schafter4",
+        "type": "coupes",
+        "level": 0,
+        "stats": {
+            "acceleration": 20,
+            "speed": 55,
+            "handling": 50
+        }
+    },
+    {
+        "name": "Revolter",
+        "spawnname": "revolter",
+        "type": "coupes",
+        "level": 2,
+        "stats": {
+            "acceleration": 50,
+            "speed": 80,
+            "handling": 65
+        }
+    },
+    {
+        "name": "Neon",
+        "spawnname": "neon",
+        "type": "sports",
+        "level": 5,
+        "stats": {
+            "acceleration": 75,
+            "speed": 85,
+            "handling": 70
+        }
+    },
+    {
+        "name": "M8",
+        "spawnname": "mansm8",
+        "type": "sports",
+        "level": 5,
+        "stats": {
+            "acceleration": 75,
+            "speed": 85,
+            "handling": 70
+        }
+    },
+    {
+        "name": "Bati",
+        "spawnname": "bati",
+        "type": "bike",
+        "level": 3,
+        "stats": {
+            "acceleration": 75,
+            "speed": 80,
+            "handling": 90
+        }
+    }
+]

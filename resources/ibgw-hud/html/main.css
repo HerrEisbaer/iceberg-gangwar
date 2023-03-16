@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:wght@400;700&family=Roboto:wght@300;400;700;900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+
+* {
+    font-family: Poppins;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+}
+
+.hudsec {
+    color: black;
+}
+
+.hud-container {
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: .5%;
+    padding-right: 1%;
+}
+
+.hud-element {
+    background: #2D2D2D;
+    padding: .5%;
+    border-radius: 1em;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.ammocount {
+    background: #2D2D2D;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    min-width: 7.75%;
+    color: white;
+    border-top-left-radius: 2em;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    padding: .5% .5% 0% .5%;
+    transform: translateX(100%);
+}
+
+.ammocount.active {
+    animation: appearfromright 1s;
+}
+
+@keyframes appearfromright {
+    from {transform: translateX(100%)}
+    to {transform: translateX(0)}
+}
+
+.ammocount p {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.ammocount h2 {
+    font-size: 38px;
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    text-align: right;
+    letter-spacing: 2px;
+}
+
+/* Notifys */
+
+.notify-container {
+    position: absolute;
+    width: 20%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: .5%;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.notify {
+    background: rgb(17, 17, 17);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1em;
+    color: white;
+    padding: 2.5%;
+    margin-bottom: 2%;
+    animation: slideinleft .7s;
+}
+
+.notify h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes slideinleft {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideoutleft {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-110%);;
+    }
+}
+
+/* Progressbar */
+
+.progressbarctn {
+    background: #2D2D2D;
+    width: 20%;
+    height: 4%;
+    border-radius: 1em;
+    left: 50%;
+    top: 95%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    color: white;
+    animation: appearfrombottom 1s;
+}
+
+@keyframes appearfrombottom {
+    from {transform: translate(-50%, 200%);}
+    to {transform: translate(-50%, -50%);}
+}
+
+.progressbarctn::before {
+    content: attr(title);
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: .5em;
+    top: .5em;
+    bottom: .5em;
+    width: calc(100% - 1em);
+    background: white;
+    border-radius: 1em;
+    box-sizing: border-box;
+    padding: .5em;
+    animation: wehgetbigger 2.5s;
+    white-space: nowrap;
+    color: black;
+}
+
+@keyframes wehgetbigger {
+    from {width: 0;}
+    to {width: calc(100% - 1em);}
+}
+
+.progressbarctn h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    color: white;
+    font-weight: 300;
+    /* background: red; */
+}
+
+.alert {
+    position: absolute;
+    background: #2D2D2D;
+    border-radius: 1em;
+    width: 30%;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto;
+    top: 1%;
+    text-align: center;
+    color: white;
+    animation: slideintop .5s;
+    padding: .5%;
+}
+
+.alert-container h2 {
+    margin: 0;
+} 
+
+.alert-container p {
+    margin: 0;
+}
+
+@keyframes slideintop {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}

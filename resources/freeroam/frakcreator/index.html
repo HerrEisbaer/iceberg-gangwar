@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
+    <title>Iceberg Gangwar - Frakcreator</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Frakcreator</h1>
+        <div class="frakcreator">
+            <p id="firstline">frak {</p>
+                <p class="secondline">name: <input type="text" id="name" class="frakcreatorinp"></p>
+                <p class="secondline">maxmember: <input type="text" id="maxmember" class="number frakerstellen"></p>
+                <p class="secondline">outfits: {</p>
+                    <p class="thirdline">head: {</p>
+                        <p class="fourthline">hat: {</p>
+                            <p>variants: [<input type="text" id="hatvariants" class="array frakerstellen">]</p>
+                        <p class="fourthline">},</p>
+                        <p class="fourthline">mask: {</p>
+                            <p>variants: [<input type="text" id="maskvariants" class="array frakerstellen">]</p>
+                        <p class="fourthline">}</p>
+                    <p class="thirdline">},</p>
+                    <p class="thirdline">body: {</p>
+                        <p class="fourthline">shirt: {</p>
+                            <p>variants: [<input type="text" id="shirtvariants" class="array frakerstellen">]</p>
+                        <p class="fourthline">},</p>
+                        <p class="fourthline">pullover: {</p>
+                            <p>variants: [<input type="text" id="pullovervariants" class="array frakerstellen">]</p>
+                        <p class="fourthline">}</p>
+                        <p class="thirdline">},</p>
+                        <p class="thirdline">legs: {</p>
+                            <p class="fourthline">pants: {</p>
+                                <p>variants: [<input type="text" id="pantsvariants" class="array frakerstellen">]</p>
+                            <p class="fourthline">}</p>
+                        <p class="thirdline">},</p>
+                        <p class="thirdline">feet: {</p>
+                            <p class="fourthline">shoes: {</p>
+                                <p>variants: [<input type="text" id="shoesvariants" class="array frakerstellen">]</p>
+                            <p class="fourthline">}</p>
+                        <p class="thirdline">}</p>
+                <p class="secondline">},</p>
+                <p class="secondline">cars: {</p>
+                    <p class="thirdline">primaryColor: <input type="text" id="primcolor" class="frakerstellen"></p>
+                    <p class="thirdline">secondaryColor <input type="text" id="secondcolor" class="frakerstellen"></p>
+                <p class="secondline">},</p>
+                <p class="secondline">coords: {</p>
+                    <p class="thirdline">playerspawns: [<input type="text" id="playerspawns" class="array frakerstellen">]</p>
+                    <p class="thirdline">carspawns: [<input type="text" id="carspawns" class="array frakerstellen">]</p>
+                <p class="secondline">}</p>
+        </div>
+        <button id="frakerstellen">Fraktion erstellen</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "mongoose": "^6.8.3",
+    "node-fetch": "^2.6.8",
+    "sha256": "^0.2.0"
+  }
+}

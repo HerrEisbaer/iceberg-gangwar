@@ -1,0 +1,567 @@
+{
+    "hat": {
+        "0": {
+            "label": "Kein Hut",
+            "index": 0,
+            "variations": [
+                {
+                    "name": "none",
+                    "label": "Kein Hut"
+                }
+            ]
+        },
+        "13": {
+            "label": "Fedora",
+            "index": 0,
+            "variations": [
+                {
+                    "name": "red",
+                    "label": "Roter Fedora"
+                }
+            ]
+        }
+    },
+    "mask": {
+        "0": {
+            "label": "weh",
+            "index": 0,
+            "variations": [
+                {
+                    "name": "rgb",
+                    "label": "187"
+                }
+            ]
+        }
+    },
+    "shirt": {
+        "0": {
+            "label": "kA",
+            "index": 0,
+            "variations": [
+                {
+                    "name": "kp",
+                    "label": "weiß nd wie das aussieht"
+                }
+            ]
+        },
+        "15": {
+            "label": "Oberkörperfrei",
+            "index": 0,
+            "variations": [
+                {
+                    "name": "invisible",
+                    "label": "Kein T-Shirt"
+                }
+            ]
+        },
+        "23": {
+            "label": "Shirt",
+            "index": 0,
+            "variations": [
+                {
+                    "name": "white",
+                    "label": "Weisses T-Shirt"
+                }
+            ]
+        }
+    },
+    "torso": {
+        "0": {
+            "label": "T-Shirt",
+            "index": 0,
+            "arms": 0,
+            "tshirt": 15,
+            "variations": [
+                {
+                    "name": "default",
+                    "label": "Blau Graues T-Shirt",
+                    "index": {
+                        "clothing": 0,
+                        "variation": 0
+                    }
+                },
+                {
+                    "name": "gray",
+                    "label": "Graues T-Shirt",
+                    "index": {
+                        "clothing": 0,
+                        "variation": 1
+                    }
+                },
+                {
+                    "name": "black",
+                    "label": "Schwarzes T-Shirt",
+                    "index": {
+                        "clothing": 0,
+                        "variation": 2
+                    }
+                },
+                {
+                    "name": "yellow",
+                    "label": "Gelbes T-Shirt",
+                    "index": {
+                        "clothing": 0,
+                        "variation": 3
+                    }
+                },
+                {
+                    "name": "white",
+                    "label": "Weißes T-Shirt",
+                    "index": {
+                        "clothing": 0,
+                        "variation": 4
+                    }
+                },
+                {
+                    "name": "lightgray",
+                    "label": "Hellgraues T-Shirt",
+                    "index": {
+                        "clothing": 0,
+                        "variation": 5
+                    }
+                },
+                {
+                    "name": "lightpink",
+                    "label": "Hellpinkes T-Shirt",
+                    "index": {
+                        "clothing": 0,
+                        "variation": 7
+                    }
+                }
+            ]
+        },
+        "11": {
+            "label": "Mafiaweste",
+            "index": 0,
+            "arms": -1,
+            "tshirt": 15,
+            "variations": [
+                {
+                    "name": "gray",
+                    "label": "Graue Mafiaweste",
+                    "index": {
+                        "clothing": 11,
+                        "variation": 0
+                    }
+                },
+                {
+                    "name": "black",
+                    "label": "Schwarze Mafiaweste",
+                    "index": {
+                        "clothing": 11,
+                        "variation": 1
+                    }
+                },
+                {
+                    "name": "lightpink",
+                    "label": "Hellpinke Mafiaweste",
+                    "index": {
+                        "clothing": 11,
+                        "variation": 7
+                    }
+                },
+                {
+                    "name": "striped",
+                    "label": "Gestreifte Mafiaweste",
+                    "index": {
+                        "clothing": 11,
+                        "variation": 14
+                    }
+                }
+            ]
+        },
+        "14": {
+            "label": "Karohemd",
+            "index": 0,
+            "arms": 4,
+            "tshirt": 15,
+            "variations": [
+                {
+                    "name": "yellow",
+                    "label": "Gelb weißes Karohemd",
+                    "index": {
+                        "clothing": 14,
+                        "variation": 1
+                    }
+                }
+            ]
+        },
+        "55": {
+            "label": "Polizeishirt",
+            "index": 0,
+            "arms": 0,
+            "tshirt": 15,
+            "variations": [
+                {
+                    "name": "default",
+                    "label": "Polizeishirt",
+                    "index": {
+                        "clothing": 55,
+                        "variation": 0
+                    }
+                }
+            ]
+        },
+        "87": {
+            "label": "Collegejacke",
+            "index": 0,
+            "arms": 0,
+            "tshirt": 15,
+            "variations": [
+                {
+                    "name": "whitegreen",
+                    "label": "Grünweisse Collegejacke",
+                    "index": {
+                        "clothing": 87,
+                        "variation": 3
+                    }
+                }
+            ]
+        },
+        "marapullover": {
+            "label": "MG13 Pulli",
+            "index": 0,
+            "arms": 4,
+            "tshirt": 15,
+            "variations": [
+                {
+                    "name": "default",
+                    "label": "MG13 Pulli",
+                    "index": {
+                        "clothing": 96,
+                        "variation": 0
+                    }
+                }
+            ]
+        },
+        "111": {
+            "label": "Enger Rollkragenpullover",
+            "index": 0,
+            "arms": 4,
+            "tshirt": 15,
+            "variations": [
+                {
+                    "name": "gray",
+                    "label": "Enger Rollkragenpullover (grau)",
+                    "index": {
+                        "clothing": 111,
+                        "variation": 0,
+                        "arms": 4
+                    }
+                },
+                {
+                    "name": "red",
+                    "label": "Enger Rollkragenpullover (rot)",
+                    "index": {
+                        "clothing": 111,
+                        "variation": 1,
+                        "arms": 4
+                    }
+                },
+                {
+                    "name": "brown",
+                    "label": "Enger Rollkragenpullover (braun)",
+                    "index": {
+                        "clothing": 111,
+                        "variation": 2,
+                        "arms": 4
+                    }
+                },
+                {
+                    "name": "black",
+                    "label": "Enger Rollkragenpullover (black)",
+                    "index": {
+                        "clothing": 111,
+                        "variation": 3,
+                        "arms": 4
+                    }
+                },
+                {
+                    "name": "blue",
+                    "label": "Enger Rollkragenpullover (blau)",
+                    "index": {
+                        "clothing": 111,
+                        "variation": 4,
+                        "arms": 4
+                    }
+                },
+                {
+                    "name": "white",
+                    "label": "Enger Rollkragenpullover (weiß)",
+                    "index": {
+                        "clothing": 111,
+                        "variation": 5,
+                        "arms": 4
+                    }
+                }
+            ]
+        },
+        "127": {
+            "label": "Geöffnetes Hemd",
+            "index": 0,
+            "arms": -1,
+            "tshirt": 15,
+            "variations": [
+                {
+                    "name": "red",
+                    "label": "Rotes geöffnetes Hemd",
+                    "index": {
+                        "clothing": 127,
+                        "variation": 10
+                    }
+                }
+            ]
+        },
+        "154": {
+            "label": "LCN Hemd",
+            "index": 0,
+            "arms": 4,
+            "tshirt": 15,
+            "variations": [
+                {
+                    "name": "default",
+                    "label": "LCN Hemd",
+                    "index": {
+                        "clothing": 154,
+                        "variation": 0
+                    }
+                }
+            ]
+        }
+    },
+    "pants": {
+        "0": {
+            "name": "default",
+            "label": "Default Hose",
+            "index": 0,
+            "variations": [
+                {
+                    "name": "default",
+                    "label": "Default Hose (grau)",
+                    "index": {
+                        "clothing": 0,
+                        "variation": 0
+                    }
+                }
+            ]
+        },
+        "5": {
+            "label": "Jogginghose",
+            "index": 0,
+            "variations": [
+                {
+                    "name": "white",
+                    "label": "Weiße Jogginghose",
+                    "index": {
+                        "clothing": 5,
+                        "variation": 0
+                    }
+                },
+                {
+                    "name": "gray",
+                    "label": "Graue Jogginghose",
+                    "index": {
+                        "clothing": 5,
+                        "variation": 1
+                    }
+                },
+                {
+                    "name": "black",
+                    "label": "Schwarze Jogginghose",
+                    "index": {
+                        "clothing": 5,
+                        "variation": 2
+                    }
+                },
+                {
+                    "name": "blue",
+                    "label": "Blaue Jogginghose",
+                    "index": {
+                        "clothing": 5,
+                        "variation": 3
+                    }
+                },
+                {
+                    "name": "red",
+                    "label": "Rote Jogginghose",
+                    "index": {
+                        "clothing": 5,
+                        "variation": 5
+                    }
+                },
+                {
+                    "name": "green",
+                    "label": "grüne Jogginghose",
+                    "index": {
+                        "clothing": 5,
+                        "variation": 6
+                    }
+                },
+                {
+                    "name": "orange",
+                    "label": "Orangene Jogginghose",
+                    "index": {
+                        "clothing": 5,
+                        "variation": 7
+                    }
+                },
+                {
+                    "name": "yellow",
+                    "label": "Gelbe Jogginghose",
+                    "index": {
+                        "clothing": 5,
+                        "variation": 8
+                    }
+                },
+                {
+                    "name": "purple",
+                    "label": "Lila Jogginghose",
+                    "index": {
+                        "clothing": 5,
+                        "variation": 9
+                    }
+                }
+            ]
+        },
+        "17": {
+            "label": "Kurze Hose",
+            "index": 0,
+            "variations": [
+                {
+                    "name": "blau",
+                    "label": "Kurze Hose (blau)",
+                    "index": {
+                        "clothing": 17,
+                        "variation": 4
+                    }
+                }
+            ]
+        },
+        "24": {
+            "label": "Enge Anzugshose",
+            "index": 0,
+            "variations": [
+                {
+                    "name": "black",
+                    "label": "Enge Anzugshose (schwarz)",
+                    "index": {
+                        "clothing": 24,
+                        "variation": 0
+                    }
+                },
+                {
+                    "name": "gray",
+                    "label": "Enge Anzugshose (grau)",
+                    "index": {
+                        "clothing": 24,
+                        "variation": 1
+                    }
+                },
+                {
+                    "name": "blue",
+                    "label": "Enge Anzugshose (blau)",
+                    "index": {
+                        "clothing": 24,
+                        "variation": 2
+                    }
+                },
+                {
+                    "name": "red",
+                    "label": "Enge Anzugshose (rot)",
+                    "index": {
+                        "clothing": 24,
+                        "variation": 4
+                    }
+                },
+                {
+                    "name": "white",
+                    "label": "Enge Anzugshose (weiß)",
+                    "index": {
+                        "clothing": 24,
+                        "variation": 5
+                    }
+                },
+                {
+                    "name": "brown",
+                    "label": "Enge Anzugshose (braun)",
+                    "index": {
+                        "clothing": 24,
+                        "variation": 6
+                    }
+                }
+            ]
+        },
+        "42": {
+            "label": "Weite kurze Hose",
+            "index": 0,
+            "variations": [
+                {
+                    "name": "black",
+                    "label": "Weite kurze Hose (schwarz)",
+                    "index": {
+                        "clothing": 42,
+                        "variation": 0
+                    }
+                }
+            ]
+        }
+    },
+    "shoes": {
+        "6": {
+            "label": "Schlappen",
+            "index": 0,
+            "variations": [
+                {
+                    "name": "black",
+                    "label": "Schlappen (schwarz)",
+                    "index": {
+                        "clothing": 6,
+                        "variation": 0
+                    }
+                }
+            ]
+        },
+        "7": {
+            "label": "Turnschuhe",
+            "index": 0,
+            "variations": [
+                {
+                    "name": "white",
+                    "label": "Turnschuhe (weiß)",
+                    "index": {
+                        "clothing": 7,
+                        "variation": 0
+                    }
+                }
+            ]
+        },
+        "10": {
+            "label": "Lackschuhe",
+            "index": 0,
+            "variations": [
+                {
+                    "name": "black",
+                    "label": "Lackschuhe (schwarz)",
+                    "index": {
+                        "clothing": 10,
+                        "variation": 0
+                    }
+                }
+            ]
+        },
+        "16": {
+            "label": "Flipflop",
+            "index": 0,
+            "variations": [
+                {
+                    "name": "black",
+                    "label": "Flipflops (schwarz)",
+                    "index": {
+                        "clothing": 16,
+                        "variation": 0
+                    }
+                }
+            ]
+        }
+    }
+}

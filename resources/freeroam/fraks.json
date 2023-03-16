@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Vagos",
+        "maxplayer": 50,
+        "currentplayer": 0,
+        "outfits": {
+            "head": {
+                "hat": [[0, 0]],
+                "mask": [[0, 0]]
+            },
+            "body": {
+                "shirt": [[15, 0]],
+                "torso": [[111, 5, 4], [111, 0, 4]]
+            },
+            "legs": {
+                "pants": [[5, 8], [5, 7]]
+            },
+            "feet": {
+                "shoes": [[6, 0]]
+            }
+        },
+        "car": {
+            "primaryColor": [255, 0, 0],
+            "secondaryColor": [0, 0, 255]
+        },
+        "coords": {
+            "playerspawn": [{"heading": 34.285930633545, "coords": [-1121.734, -1614.148, 4.398434]}],
+            "carspawner": [{"heading": 213.37686157227, "coords": [-1129.703, -1604.476, 4.398433]}, {"heading": 235.88491821289, "coords": [-1122.788, -1605.948, 4.398426]}],
+            "carspawns": [{"heading": 0, "coords": [-1123.052, -1597.768, 4.38585]}, {"heading": 0, "coords": [-1132.273, -1572.373, 4.356716]}]
+        }
+    },
+    {
+        "name": "Bloods",
+        "maxplayer": 50,
+        "currentplayer": 0,
+        "outfits": {
+            "head": {
+                "hat": [[0, 0]],
+                "mask": [[0, 0]]
+            },
+            "body": {
+                "shirt": [[23, 0]],
+                "torso": [[127, 10, 4]]
+            },
+            "legs": {
+                "pants": [[5, 5]]
+            },
+            "feet": {
+                "shoes": [[6, 0]]
+            }
+        },
+        "car": {
+            "primaryColor": [255, 0, 0],
+            "secondaryColor": [0, 0, 255]
+        },
+        "coords": {
+            "playerspawn": [{"heading": 34.285930633545, "coords": [-1121.734, -1614.148, 4.398434]}],
+            "carspawner": [{"heading": 213.37686157227, "coords": [-1129.703, -1604.476, 4.398433]}, {"heading": 235.88491821289, "coords": [-1122.788, -1605.948, 4.398426]}],
+            "carspawns": [[-1123.052, -1597.768, 4.38585]]
+        }
+    }
+]

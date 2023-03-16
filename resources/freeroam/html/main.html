@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js" defer></script>
+    <title>Iceberg Gangwar - Main UI Page</title>
+</head>
+<body>
+    <!-- <section class="loginsection">
+        <div class="login">
+            <div class="container">
+                <h2>Login</h2>
+                <div class="inputs">
+                    <input type="text" name="username" id="username" placeholder="Username" autocomplete="off">
+                    <input type="password" name="password" id="password" placeholder="Passwort">
+                    <button id="loginbtn" onclick="tryLogInPlayer()">Login</button>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <section class="frakauswahl">
+        <div class="navbar">
+            <span id="logo">
+                <img src="../img/stefanraab.jpg">
+            </span>
+            <span id="currentfrakimg">
+                <img src="">
+            </span>
+            <span id="dashboard">
+                <svg width="42px" height="42px" viewBox="0 0 65 65" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 8C0 3.58172 3.58172 0 8 0H22C26.4183 0 30 3.58172 30 8V30C30 34.4183 26.4183 38 22 38H8C3.58172 38 0 34.4183 0 30V8Z"/>
+                    <path d="M35 35C35 30.5817 38.5817 27 43 27H57C61.4183 27 65 30.5817 65 35V57C65 61.4183 61.4183 65 57 65H43C38.5817 65 35 61.4183 35 57V35Z"/>
+                    <path d="M0 51C0 46.5817 3.58172 43 8 43H22C26.4183 43 30 46.5817 30 51V57C30 61.4183 26.4183 65 22 65H8C3.58172 65 0 61.4183 0 57V51Z"/>
+                    <path d="M35 8C35 3.58172 38.5817 0 43 0H57C61.4183 0 65 3.58172 65 8V14C65 18.4183 61.4183 22 57 22H43C38.5817 22 35 18.4183 35 14V8Z"/>
+                </svg>
+            </span>
+            <span id="frak">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                    width="48px" height="48px" viewBox="0 0 512.000000 512.000000"
+                    preserveAspectRatio="xMidYMid meet">
+
+                    <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                    fill="currentColor" stroke="none">
+                    <path d="M2414 4719 c-89 -15 -206 -57 -294 -106 -113 -63 -266 -215 -327
+                    -323 -201 -357 -144 -788 143 -1074 170 -171 382 -258 624 -258 242 0 454 87
+                    624 258 287 286 344 717 143 1074 -61 108 -214 260 -327 323 -178 99 -393 138
+                    -586 106z"/>
+                    <path d="M832 3880 c-197 -52 -367 -201 -445 -390 -37 -90 -48 -150 -48 -256
+                    0 -107 19 -192 66 -289 82 -170 248 -304 435 -351 85 -22 235 -21 320 1 148
+                    38 304 148 389 274 135 200 148 465 34 684 -51 98 -172 219 -270 270 -146 76
+                    -326 97 -481 57z"/>
+                    <path d="M3952 3880 c-169 -45 -336 -176 -415 -327 -91 -175 -103 -380 -31
+                    -561 76 -189 254 -345 454 -397 85 -22 235 -23 320 -1 236 60 424 248 485 485
+                    19 73 22 222 6 296 -53 243 -247 444 -487 505 -100 26 -233 26 -332 0z"/>
+                    <path d="M1955 2755 c-152 -34 -252 -90 -366 -204 -95 -95 -146 -176 -188
+                    -299 l-26 -77 -3 -840 c-2 -826 -2 -841 18 -873 11 -18 34 -41 52 -52 32 -20
+                    53 -20 1118 -20 1065 0 1086 0 1118 20 18 11 41 34 52 52 20 32 20 47 18 873
+                    l-3 840 -26 77 c-42 123 -93 204 -188 299 -95 95 -176 146 -299 188 l-77 26
+                    -570 2 c-451 1 -583 -1 -630 -12z"/>
+                    <path d="M642 2379 c-287 -37 -523 -241 -614 -529 -23 -75 -23 -77 -23 -595
+                    l0 -520 23 -57 c47 -117 144 -213 260 -260 55 -22 67 -23 434 -26 l377 -3 -12
+                    33 c-15 44 -23 1572 -8 1708 6 52 18 122 27 155 9 33 19 70 21 83 l5 22 -213
+                    -1 c-118 -1 -243 -5 -277 -10z"/>
+                    <path d="M3993 2368 c2 -13 12 -50 21 -83 9 -33 21 -103 27 -155 15 -136 7
+                    -1664 -8 -1708 l-12 -33 377 3 c367 3 379 4 434 26 116 47 213 143 260 260
+                    l23 57 0 520 c0 519 0 520 -24 595 -75 240 -244 418 -471 495 -101 34 -203 45
+                    -433 45 l-199 0 5 -22z"/>
+                    </g>
+                </svg>
+            </span>
+            <span id="outfit">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                width="48px" height="48px" viewBox="0 0 512.000000 512.000000"
+                preserveAspectRatio="xMidYMid meet">
+
+                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                fill="currentColor" stroke="none">
+                <path d="M1790 4900 c-171 -21 -263 -55 -619 -235 -275 -139 -337 -177 -433
+                -265 -108 -99 -155 -166 -418 -606 -213 -357 -255 -433 -281 -513 -84 -264
+                -25 -538 161 -743 33 -37 172 -150 352 -284 l297 -223 3 -643 c4 -641 4 -643
+                27 -713 35 -108 87 -193 165 -271 80 -80 166 -132 276 -166 l75 -23 1165 0
+                1165 0 75 23 c110 34 196 86 276 166 78 78 130 163 165 271 23 70 23 72 27
+                712 l3 642 297 224 c163 124 316 245 339 269 168 176 244 427 199 660 -25 130
+                -58 197 -285 578 -261 438 -300 497 -383 585 -112 120 -199 176 -533 341 -334
+                165 -414 195 -578 213 -111 13 -1434 13 -1537 1z m1355 -457 c-71 -171 -243
+                -320 -425 -369 -78 -20 -224 -23 -300 -5 -190 45 -372 197 -445 374 l-15 37
+                600 0 600 0 -15 -37z"/>
+                </g>
+                </svg>
+            </span>
+            <span id="exit">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                    width="42px" height="42px" viewBox="0 0 512.000000 512.000000"
+                    preserveAspectRatio="xMidYMid meet">
+
+                    <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                    fill="currentColor" stroke="none">
+                    <path d="M661 5105 c-150 -33 -254 -83 -363 -175 -117 -97 -209 -237 -255
+                    -385 l-28 -90 0 -1895 0 -1895 28 -90 c80 -259 283 -462 542 -542 l90 -28
+                    1140 0 1140 0 90 28 c259 80 463 284 542 542 27 90 27 91 28 390 0 299 0 300
+                    -24 338 -13 21 -42 50 -64 65 -34 23 -52 27 -107 27 -55 0 -73 -4 -107 -27
+                    -22 -15 -51 -44 -64 -65 -23 -37 -24 -46 -30 -313 -5 -255 -7 -279 -28 -333
+                    -43 -110 -132 -195 -245 -234 -48 -17 -118 -18 -1136 -18 l-1085 0 -58 23
+                    c-111 45 -195 133 -234 246 -17 48 -18 146 -18 1886 0 1740 1 1838 18 1886 39
+                    113 123 201 234 246 l58 23 1085 0 c1018 0 1088 -1 1136 -18 113 -39 202 -124
+                    245 -234 21 -54 23 -78 28 -334 l6 -276 27 -40 c41 -62 90 -88 168 -88 78 0
+                    127 26 168 88 l27 41 0 300 c-1 300 -1 301 -28 391 -79 258 -283 462 -542 542
+                    l-90 28 -1115 2 c-924 1 -1126 -1 -1179 -12z"/>
+                    <path d="M4315 3391 c-88 -41 -133 -131 -113 -227 9 -46 23 -62 191 -231 l181
+                    -183 -1235 -2 -1235 -3 -41 -27 c-63 -41 -88 -90 -88 -169 0 -54 5 -72 27
+                    -106 15 -22 44 -51 65 -64 l38 -24 1234 -3 1235 -2 -181 -183 c-168 -169 -182
+                    -185 -191 -231 -34 -162 126 -295 273 -227 26 12 132 112 306 287 247 250 268
+                    274 300 344 33 74 34 77 34 210 0 133 -1 136 -34 210 -32 70 -53 94 -300 344
+                    -174 175 -280 275 -306 287 -51 24 -109 24 -160 0z"/>
+                    </g>
+                    </svg>
+            </span>
+            <span id="settings">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                    width="32.000000pt" height="32.000000pt" viewBox="0 0 512.000000 512.000000"
+                    preserveAspectRatio="xMidYMid meet">
+
+                    <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                    fill="currentColor" stroke="none">
+                    <path d="M2205 5106 c-41 -18 -82 -68 -94 -114 -5 -20 -37 -152 -72 -292 -34
+                    -140 -65 -262 -70 -270 -4 -9 -38 -26 -76 -40 -37 -13 -111 -43 -163 -67 -52
+                    -24 -102 -42 -110 -40 -8 2 -120 68 -248 145 -128 78 -248 144 -267 148 -71
+                    13 -97 -6 -337 -244 -125 -124 -235 -241 -244 -260 -34 -72 -21 -105 144 -380
+                    l151 -252 -33 -73 c-18 -39 -43 -103 -57 -141 -15 -43 -31 -72 -44 -77 -11 -5
+                    -148 -40 -304 -78 -287 -70 -315 -80 -355 -135 -20 -27 -21 -40 -21 -376 0
+                    -336 1 -349 21 -376 40 -54 68 -65 355 -135 156 -38 293 -73 304 -78 13 -5 29
+                    -33 44 -77 14 -38 43 -110 67 -161 l42 -91 -136 -226 c-112 -188 -136 -235
+                    -140 -275 -3 -31 1 -58 11 -77 26 -48 478 -492 510 -500 67 -16 106 0 336 138
+                    l224 135 91 -42 c50 -23 122 -53 160 -66 43 -15 72 -31 77 -44 5 -11 40 -148
+                    78 -304 70 -287 81 -315 135 -355 27 -20 40 -21 376 -21 336 0 349 1 376 21
+                    54 40 65 68 135 355 38 156 73 293 78 304 5 13 33 29 77 45 38 13 111 43 163
+                    67 l94 44 235 -141 c222 -132 238 -140 287 -140 70 0 85 12 341 271 222 225
+                    243 254 230 322 -3 18 -69 137 -147 266 l-140 234 45 101 c24 56 52 125 63
+                    155 11 32 26 57 38 62 11 5 148 40 304 78 287 70 315 81 355 135 20 27 21 40
+                    21 376 0 336 -1 349 -21 376 -40 54 -68 65 -355 135 -156 38 -293 73 -304 78
+                    -13 5 -29 34 -44 77 -14 38 -42 107 -63 154 -22 46 -37 92 -35 101 3 9 62 112
+                    131 228 151 250 160 270 151 325 -7 37 -29 63 -234 269 -124 126 -239 238
+                    -255 250 -21 15 -45 21 -81 22 -49 0 -64 -8 -289 -142 -131 -79 -241 -143
+                    -246 -143 -4 0 -46 17 -92 38 -45 21 -114 49 -152 63 -43 15 -72 31 -77 44 -5
+                    11 -40 148 -78 304 -70 287 -80 315 -135 355 -26 20 -42 21 -364 23 -265 2
+                    -344 0 -367 -11z m498 -1507 c415 -62 750 -354 865 -754 160 -552 -165 -1132
+                    -723 -1293 -552 -160 -1132 165 -1293 723 -190 657 309 1325 996 1334 46 1
+                    116 -4 155 -10z"/>
+                    </g>
+                </svg>
+            </span>
+        </div>
+        <div id="frakauswahlcontent" class="content"></div>
+    </section>
+
+    <!-- <section class="hudsec">
+        <div class="hud-container">
+            <div class="hud-element" id="hudid">ID: &nbsp<span>111</span></div>
+            <div class="hud-element" id="hudkills">Kills: &nbsp<span>187</span></div>
+            <div class="hud-element" id="huddeaths">Tode: &nbsp<span>69</span></div>
+            <div class="hud-element" id="hudkd">K/D: &nbsp<span>2.69</span></div>
+            <div class="hud-element" id="hudlevel">Level: &nbsp<span>5</span></div>
+        </div>
+    </section>   -->
+
+    <section class="frakcreator-section">
+        <div class="container">
+            <h1>Frakcreator</h1>
+            <div class="frakcreator">
+                <p id="firstline">frak {</p>
+                    <p class="secondline">name: <input type="text" id="name" class="frakcreatorinp"></p>
+                    <p class="secondline">maxmember: <input type="text" id="maxmember" class="number frakerstellen"></p>
+                    <p class="secondline">outfits: {</p>
+                        <p class="thirdline">head: {</p>
+                            <p class="fourthline">hat: {</p>
+                                <p>variants: [<input type="text" id="hatvariants" class="array frakerstellen">]</p>
+                            <p class="fourthline">},</p>
+                            <p class="fourthline">mask: {</p>
+                                <p>variants: [<input type="text" id="maskvariants" class="array frakerstellen">]</p>
+                            <p class="fourthline">}</p>
+                        <p class="thirdline">},</p>
+                        <p class="thirdline">body: {</p>
+                            <p class="fourthline">shirt: {</p>
+                                <p>variants: [<input type="text" id="shirtvariants" class="array frakerstellen">]</p>
+                            <p class="fourthline">},</p>
+                            <p class="fourthline">pullover: {</p>
+                                <p>variants: [<input type="text" id="pullovervariants" class="array frakerstellen">]</p>
+                            <p class="fourthline">}</p>
+                            <p class="thirdline">},</p>
+                            <p class="thirdline">legs: {</p>
+                                <p class="fourthline">pants: {</p>
+                                    <p>variants: [<input type="text" id="pantsvariants" class="array frakerstellen">]</p>
+                                <p class="fourthline">}</p>
+                            <p class="thirdline">},</p>
+                            <p class="thirdline">feet: {</p>
+                                <p class="fourthline">shoes: {</p>
+                                    <p>variants: [<input type="text" id="shoesvariants" class="array frakerstellen">]</p>
+                                <p class="fourthline">}</p>
+                            <p class="thirdline">}</p>
+                    <p class="secondline">},</p>
+                    <p class="secondline">cars: {</p>
+                        <p class="thirdline">primaryColor: <input type="text" id="primcolor" class="frakerstellen"></p>
+                        <p class="thirdline">secondaryColor <input type="text" id="secondcolor" class="frakerstellen"></p>
+                    <p class="secondline">},</p>
+                    <p class="secondline">coords: {</p>
+                        <p class="thirdline">playerspawns: [<input type="text" id="playerspawns" class="array frakerstellen">]</p>
+                        <p class="thirdline">carspawns: [<input type="text" id="carspawns" class="array frakerstellen">]</p>
+                    <p class="secondline">}</p>
+                <button id="frakerstellen">Fraktion erstellen</button>        
+            </div>
+        </div>
+    </section>
+
+    <section class="testclothingsec">
+        <div class="clothingtest">
+            <h1>Clothing test</h1>
+            <div class="button-holder-container">
+                <div class="button-holder">
+                    <button class="before"><img src="../img/buttons/before.png" width="32px" height="32px"></button>
+                    <p id="clothingtestp">0</p>
+                    <button class="after"><img src="../img/buttons/next.png" width="32px" height="32px"></button>
+                </div>
+                <div class="button-holder variation">
+                    <button class="before"><img src="../img/buttons/before.png" width="32px" height="32px"></button>
+                    <p id="clothingtestvarp">0</p>
+                    <button class="after"><img src="../img/buttons/next.png" width="32px" height="32px"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="carauswahlsec">
+        <div class="carauswahl-container">
+            <div class="car-section" id="coupessec">
+                <h2>Coupés</h2>
+                <div class="carcontainer"></div>
+            </div>
+            <div class="car-section" id="sportsec">
+                <h2>Sport</h2>
+                <div class="carcontainer">
+                    
+                </div>
+            </div>
+            <div class="car-section" id="supersec">
+                <h2>Super</h2>
+                <div class="carcontainer">
+                    
+                </div>
+            </div>
+            <div class="car-section" id="bikesec">
+                <h2>Bikes</h2>
+                <div class="carcontainer">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="notifysec">
+        <div class="notify-container"></div>
+    </section>
+
+    <template id="dashboardtem">
+        <div id="dashboard-container">
+            <div class="header">
+                <h2>Dashboard</h2>
+                <div class="notifs">
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                            width="26.000000pt" height="26.000000pt" viewBox="0 0 512.000000 512.000000"
+                            preserveAspectRatio="xMidYMid meet">
+
+                            <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                            fill="currentColor" stroke="none">
+                            <path d="M2455 4904 c-338 -33 -603 -132 -848 -315 -294 -218 -507 -537 -598
+                            -891 -45 -177 -49 -253 -49 -965 l0 -671 -195 -297 c-222 -338 -230 -355 -223
+                            -500 3 -82 8 -101 41 -167 61 -124 177 -211 316 -238 77 -14 3247 -14 3327 1
+                            154 28 283 138 336 287 29 82 28 207 -2 286 -13 33 -106 185 -211 343 l-189
+                            283 0 673 c0 712 -4 788 -49 965 -74 288 -208 520 -425 738 -250 250 -531 394
+                            -871 449 -95 15 -293 26 -360 19z"/>
+                            <path d="M1960 634 c0 -4 14 -34 30 -68 61 -124 163 -222 295 -286 103 -49
+                            169 -64 280 -63 192 1 360 80 487 230 39 46 108 165 108 187 0 3 -270 6 -600
+                            6 -330 0 -600 -3 -600 -6z"/>
+                            </g>
+                        </svg>
+                    </span>
+                </div>
+                <img id="useravater" src="../img/stefanraab.jpg">
+            </div>
+            <div class="content-container">
+                <!-- Kills, Deaths, Level -->
+                <div class="content-container-element kills">
+                    <h3>Kills</h3>
+                    <h2></h2>
+                    <p>Alle Spieler haben durchschnittlich 150.3 Kills</p>
+                </div>
+                <div class="content-container-element deaths">
+                    <h3>Deaths</h3>
+                    <h2></h2>
+                    <p>Alle Spieler haben durchschnittlich 123.2 Deaths</p>
+                </div>
+                <div class="content-container-element level">
+                    <h3>Level</h3>
+                    <h2></h2>
+                    <p>Alle Spieler sind durchschnittlich Level 2.3</p>
+                </div>
+                <!-- Spieler Diagramm, News -->
+                <div class="content-container-element players">
+                    <h3>Spieleranzahl</h3>
+                    <div class="data">
+                        <canvas id="playerdatachart"></canvas>
+                    </div>
+                </div>
+                <div class="content-container-element news">
+                    <h3>News</h3>
+                    <div class="news-container"></div>
+                </div>
+                <!-- Aktueller Krieg, Top Fraktionen -->
+                <div class="content-container-element krieg">
+                    <h3>Aktueller Krieg</h3>
+                    <h2>LCN vs Vagos</h2>
+                </div>
+                <div class="content-container-element bestfraks">
+                    <h3>Beste Fraks</h3>
+                    <h2>LCN 1023 Kills</h2>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="fraktem">
+        <div class="frakelems-container">
+            <div class="current-frak">
+                <h2>Aktuelle Fraktion: <span id="currentFrak">Nichts</span></h2>
+            </div>
+            <div class="frak-container"></div>
+        </div>
+    </template>
+
+    <template id="fraktemye">
+        <div class="frak" frak="">
+            <img src="" width="128px" height="128px">
+            <p></p><span></span>
+        </div>
+    </template>
+
+    <template id="clothingtem">
+        <div class="clothing-container">
+            <div class="button-container">
+                <div class="btn-container headbtns">
+                    <h4>Head</h4>
+                    <div class="btn-holder">
+                        <button class="before"><img src="../img/buttons/before.png" width="32px" height="32px"></button>
+                        <div class="btntext">
+                            <p>Hat</p>
+                            <span id="hatspan">187</span>
+                        </div>
+                        <button class="after"><img src="../img/buttons/next.png" width="32px" height="32px"></button>
+                    </div>
+                    <div class="btn-holder">
+                        <button class="before"><img src="../img/buttons/before.png" width="32px" height="32px"></button>
+                        <div class="btntext">
+                            <p>Mask</p>
+                            <span id="maskspan"></span>
+                        </div>
+                        <button class="after"><img src="../img/buttons/next.png" width="32px" height="32px"></button>
+                    </div>
+                </div>
+                <div class="btn-container bodybtns">
+                    <h4>Body</h4>
+                    <div class="btn-holder">
+                        <button class="before"><img src="../img/buttons/before.png" width="32px" height="32px"></button>
+                        <div class="btntext">
+                            <p>Shirt</p>
+                            <span id="shirtspan"></span>
+                        </div>
+                        <button class="after"><img src="../img/buttons/next.png" width="32px" height="32px"></button>
+                    </div>
+                    <div class="btn-holder">
+                        <button class="before"><img src="../img/buttons/before.png" width="32px" height="32px"></button>
+                        <div class="btntext">
+                            <p>Torso</p>
+                            <span id="torsospan"></span>
+                        </div>
+                        <button class="after"><img src="../img/buttons/next.png" width="32px" height="32px"></button>
+                    </div>
+                </div>
+                <div class="btn-container legbtns">
+                    <h4>Legs</h4>
+                    <div class="btn-holder">
+                        <button class="before"><img src="../img/buttons/before.png" width="32px" height="32px"></button>
+                        <div class="btntext">
+                            <p>Pants</p>
+                            <span id="pantsspan"></span>
+                        </div>
+                        <button class="after"><img src="../img/buttons/next.png" width="32px" height="32px"></button>
+                    </div>
+                </div>
+                <div class="btn-container legbtns">
+                    <h4>Feet</h4>
+                    <div class="btn-holder">
+                        <button class="before"><img src="../img/buttons/before.png" width="32px" height="32px"></button>
+                        <div class="btntext">
+                            <p>Shoes</p>
+                            <span id="shoesspan"></span>
+                        </div>
+                        <button class="after"><img src="../img/buttons/next.png" width="32px" height="32px"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="settingstem">
+        <div class="settings-container"></div>
+    </template>
+
+    <template id="settingselement-tem">
+        <div class="settings-element">
+            <div>
+                <h2 class="stng-title"></h2>
+                <p class="stng-text"></p>
+            </div>
+            <div class="stng-content"></div>
+        </div>
+    </template>
+
+    <template id="stngcontentel-tem">
+        <div class="stng-content-element">
+            <h2 class="stngcnt-title"></h2>
+            <p class="stngcnt-text"></p>
+        </div>
+    </template>
+
+    <template id="newsitemtem">
+        <div class="news-item">
+            <img>
+            <h3></h3>
+            <p></p>
+        </div>
+    </template>
+
+    <template id="notifytem">
+        <div class="notify">
+            <h2>Title</h2>
+            <p>Text</p>
+        </div>
+    </template>
+
+    <template id="carholdertem">
+        <div class="car-holder">
+            <h3></h3>
+            <p>
+                <span><img src="../../img/star.svg"></span>
+            </p>
+            <div class="stats">
+                <div class="stat">
+                    <h3>Beschleunigung</h3>
+                    <div class="statbar" statvalue="25"></div>
+                </div>
+                <div class="stat">
+                    <h3>Höchstgeschwindigkeit</h3>
+                    <div class="statbar" statvalue="75"></div>
+                </div>
+                <div class="stat">
+                    <h3>Handling</h3>
+                    <div class="statbar" statvalue="60"></div>
+                </div>
+            </div>
+            <span class="exitcar">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                    width="42px" height="42px" viewBox="0 0 512.000000 512.000000"
+                    preserveAspectRatio="xMidYMid meet">
+
+                    <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                    fill="currentColor" stroke="none">
+                    <path d="M661 5105 c-150 -33 -254 -83 -363 -175 -117 -97 -209 -237 -255
+                    -385 l-28 -90 0 -1895 0 -1895 28 -90 c80 -259 283 -462 542 -542 l90 -28
+                    1140 0 1140 0 90 28 c259 80 463 284 542 542 27 90 27 91 28 390 0 299 0 300
+                    -24 338 -13 21 -42 50 -64 65 -34 23 -52 27 -107 27 -55 0 -73 -4 -107 -27
+                    -22 -15 -51 -44 -64 -65 -23 -37 -24 -46 -30 -313 -5 -255 -7 -279 -28 -333
+                    -43 -110 -132 -195 -245 -234 -48 -17 -118 -18 -1136 -18 l-1085 0 -58 23
+                    c-111 45 -195 133 -234 246 -17 48 -18 146 -18 1886 0 1740 1 1838 18 1886 39
+                    113 123 201 234 246 l58 23 1085 0 c1018 0 1088 -1 1136 -18 113 -39 202 -124
+                    245 -234 21 -54 23 -78 28 -334 l6 -276 27 -40 c41 -62 90 -88 168 -88 78 0
+                    127 26 168 88 l27 41 0 300 c-1 300 -1 301 -28 391 -79 258 -283 462 -542 542
+                    l-90 28 -1115 2 c-924 1 -1126 -1 -1179 -12z"/>
+                    <path d="M4315 3391 c-88 -41 -133 -131 -113 -227 9 -46 23 -62 191 -231 l181
+                    -183 -1235 -2 -1235 -3 -41 -27 c-63 -41 -88 -90 -88 -169 0 -54 5 -72 27
+                    -106 15 -22 44 -51 65 -64 l38 -24 1234 -3 1235 -2 -181 -183 c-168 -169 -182
+                    -185 -191 -231 -34 -162 126 -295 273 -227 26 12 132 112 306 287 247 250 268
+                    274 300 344 33 74 34 77 34 210 0 133 -1 136 -34 210 -32 70 -53 94 -300 344
+                    -174 175 -280 275 -306 287 -51 24 -109 24 -160 0z"/>
+                </g>
+                </svg>
+            </span>
+        </div>
+    </template>
+
+</body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

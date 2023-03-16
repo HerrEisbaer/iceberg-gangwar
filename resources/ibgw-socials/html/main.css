@@ -1,0 +1,702 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:wght@400;700&family=Roboto:wght@300;400;700;900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+
+:root {
+    /* --mask:
+    /* radial-gradient(28.53px at 50% calc(100% - 38.75px),#000 99%,#0000 101%) calc(50% - 50px) 0/100px 100%,
+    radial-gradient(28.53px at 50% calc(100% + 13.75px),#0000 99%,#000 101%) 50% calc(100% - 25px)/100px 100% repeat-x; */
+    /* radial-gradient(21.54px at calc(100% - 28.00px) 50%,#000 99%,#0000 101%) 0 calc(50% - 40px)/100% 80px,
+    radial-gradient(21.54px at calc(100% + 8.00px) 50%,#0000 99%,#000 101%) calc(100% - 20px) 50%/100% 80px repeat-y; */
+    --mask:
+    radial-gradient(24.60px at 50% calc(100% - 34.50px),#000 99%,#0000 101%) calc(50% - 30px) 0/60px 100%,
+    radial-gradient(24.60px at 50% calc(100% + 19.50px),#0000 99%,#000 101%) 50% calc(100% - 15px)/60px 100% repeat-x;
+}
+
+* {
+    font-family: Poppins;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow: hidden;
+    /* background-image: url("https://i.ytimg.com/vi/vJWZo0yk_Ok/maxresdefault.jpg"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.allsocials-container {
+    background: white;
+    width: 80%;
+    height: 80vh;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: .75em;
+    /* background: rgb(100, 100, 255); */
+    background: #24acac;
+}
+
+.allsocials-container.änderfarbeundjoa {
+    /* background: rgb(100, 100, 255); */
+    background: #24acac;
+    transition: 2s;
+}
+
+.allsocials-container .overlay {
+    width: 100%;
+    height: 100%;
+    border-radius: .75em;
+    overflow: hidden;
+    position: absolute;
+}
+
+.allsocials-container .overlay .wellenundso {
+    position: absolute;
+    border-radius: .75em;
+    width: 100%;
+    height: 100%;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+    transform: rotate(-70deg) translateY(-110%);
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 5%, #C850C0 20%, #FFCC70 70%);
+    animation: vonlinks 1.5s;
+}
+
+.allsocials-container .overlay  .wellenundso.gehwegwellen {
+    transform: rotate(-70deg) translateY(-175%);
+    transition: 2s;
+}
+
+@keyframes vonlinks {
+    from {transform: rotate(-70deg) translateY(-175%);}
+    to {transform: rotate(-70deg) translateY(-110%);}
+}
+
+.allsocials-container .overlay .soboden {
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    bottom: 0;
+    transform: translateY(0);
+    animation: vonunten 2s;
+}
+
+.allsocials-container .overlay .soboden.gehwegboden {
+    transform: translateY(300%);
+    transition: 2s;
+    animation: vonunten 2s reverse;
+}
+
+@keyframes vonunten {
+    from {transform: translateY(200%);}
+    to {transform: translateY(0);}
+}
+
+.buttonundso {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20%;
+    flex-direction: column;
+    align-items: center;
+    animation: buttonerscheintlg 2s;
+}
+
+@keyframes buttonerscheintlg {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.buttongeht {
+    opacity: 0;
+    transition: 1s;
+}
+
+.buttonundso button {
+    /* background: rgb(100, 100, 255); */
+    background: #24acac;
+    color: white;
+    font-family: Poppins;
+    text-transform: uppercase;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    padding: 1% 8%;
+    border-radius: 5em;
+    box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.5);
+}
+
+
+.buttonundso button:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+    transition: .05s;
+}
+
+.buttonundso button:active {
+    transform: translateY(2px);
+    transition: .05s;
+}
+
+.buttonundso button.jamanwoohuuu:hover {
+    transform: none;
+}
+
+.buttonundso button.jamanwoohuuu:active {
+    transform: none;
+}
+
+.buttonundso button.jamanrp {
+    position: absolute;
+    transition: all 2s;
+    transform: translate(0, 0);
+    top: 0;
+    left: 0;
+    display: inline-block;
+    animation: 2s ease-in-out alternate swingParent;
+    padding: 1% 1.5%;
+    box-shadow: none;
+    letter-spacing: 1px;
+    font-size: 24px;
+}
+
+@keyframes swingParent {
+    from {
+      left: var(--left);
+      top: var(--top);
+      transform: translate(var(--left), var(--top));
+    }
+    to {
+      /* transform: translate(0, 0); */
+      left: 0;
+      top: 0;
+    }
+}
+
+@keyframes omgjajahahah {
+    from {}
+    to {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 1% 1%;
+    }
+}
+
+.wave {
+    background: url("./wave.svg") repeat-x;
+    position: absolute;
+    top: -70px;
+    width: 6400px;
+    height: 180px;
+    animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+    transform: translate3d(0, 0, 0);
+}
+  
+.wave:nth-of-type(2) {
+    top: -80px;
+    animation: wave 7s cubic-bezier(0.5, 0.50, 0.50, 0.5) -0.125s infinite;
+    opacity: 1;
+}
+  
+@keyframes wave {
+    0% {
+        margin-left: 0;
+    }
+    100% {
+        margin-left: -1600px;
+    }
+}
+
+.slider {
+    /* background: rgb(100, 100, 255); */
+    background: #24acac;
+    background: white;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    animation: jomanerpeman 1s;
+    display: none;
+}
+
+@keyframes jomanerpeman {
+    from {left: 100%;}
+    to {left: 0;}
+}
+
+/* Friends Seite */
+
+.friendscontainer {
+    color: white;
+    /* background: rgb(100, 100, 255); */
+    background: linear-gradient(150deg, #24acac, lightpink);
+    display: flex;
+    flex-direction: row;
+    border-radius: .75em;
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    animation: lolgangrp 2s;
+}
+
+@keyframes lolgangrp {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.ownfriends {
+    height: 80vh;
+    width: 25%;
+    border-bottom-left-radius: 1em;
+    border-top-left-radius: 1em;
+    padding: 1% 1%;
+    text-align: center;
+    border-right: 1px solid gray;
+}
+
+.searchfriends {
+    height: 80vh;
+    width: 75%;
+    border-bottom-right-radius: 1em;
+    border-top-right-radius: 1em;
+}
+
+.allfriends-container {
+    padding: 2%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1%;
+}
+
+.friend, .player, .member {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    padding-left: 20%;
+    align-items: flex-start;
+    flex-direction: column;
+    background: #2b2b2b;
+    border-radius: .5em;
+    width: 100%;
+    height: 60px;
+}
+
+.friend img, .player img, .member img {
+    position: absolute;
+    left: 2%;
+    width: 48px;
+    height: 48px;
+    border-radius: .5em;
+}
+
+.friend h3, .player h3, .member h3 {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.friend p, .player p, .member p{
+    position: relative;
+    margin: 0;
+}
+
+.friend span, .player span {
+    height: 10px;
+    width: 10px;
+    border-radius: 100%;
+    position: absolute;
+    top: 20%;
+    transform: translate(50%, 50%);
+}
+
+.friend svg, .player svg, .member svg {
+    position: absolute;
+    right: 5%;
+    color: white;
+}
+
+.friend svg:hover, .player svg:hover, .member svg:hover {
+    animation: colorchange 20s infinite;
+    cursor: pointer;
+}
+
+@keyframes colorchange {
+    0% {
+      color: blue;
+    }
+    10% {
+      color: #8e44ad;
+    }
+    20% {
+      color: #1abc9c;
+    }
+    30% {
+      color: #d35400;
+    }
+    40% {
+      color: blue;
+    }
+    50% {
+      color: #34495e;
+    }
+    60% {
+      color: blue;
+    }
+    70% {
+      color: #2980b9;
+    }
+    80% {
+      color: #f1c40f;
+    }
+    90% {
+      color: #2980b9;
+    }
+    100% {
+      color: pink;
+    }
+}
+
+.friend span[status="online"], .player span[status="online"] {background: green;}
+.friend span[status="offline"], .player span[status="offline"] {background: red;}
+.friend span[status="party"], .player span[status="party"] {background: purple;}
+.friend span[status="notavailable"], .player span[status="notavailable"] {background: orange;}
+
+.searchfriends {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.searchcontainer {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding: 1%;
+    gap: 1%;
+    border-bottom: 1px solid gray;
+}
+
+.searchcontainer input {
+    background: none;
+    outline: none;
+    border: 2px solid rgb(75, 75, 75);
+    padding: 0 8px;
+    border-radius: 1em;
+    color: white;
+}
+
+.searchcontainer svg {
+    color: rgb(75, 75, 75);
+    transition: .2s all;
+}
+
+.searchcontainer svg:hover {
+    color: white;
+    transition: .2s all;
+    cursor: pointer;
+}
+
+.ergebnisse {
+    width: 100%;
+    height: 100%;
+}
+
+.ergebnisauflisten, .ergebnissetzen {
+    padding: 1.5% 2%;
+    width: 100%;
+    height: 100%;
+}
+
+.ergebnisauflisten h2, .ergebnissetzen h2 {
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.ergebnissetzen h2 {
+    display: flex;
+    align-items: center;
+    gap: 1%;
+}
+
+.ergebnissetzen h2 img {
+    width: 24px;
+}
+
+.role {
+    font-size: 18px;
+    display: flex;
+    justify-content: left;
+    gap: 6px;
+    align-items: center;
+    border-radius: 1em;
+    border: 1px solid rgb(75, 75, 75);
+    background: rgb(75, 75, 75);
+    padding: 0 .75%;
+    /* max-width: 130px; */
+}
+
+.alleergebnisselg {
+    width: 100%;
+    height: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1%;
+}
+
+.player {
+    width: 30%;
+}
+
+.player h3, .player p {
+    left: -140%;
+}
+
+.playerdetails {
+    border: 1px solid rgb(75, 75, 75);
+    border-radius: 1em;
+    width: 100%;
+    height: 95%;
+    padding: 1%;
+}
+
+.schnell h3 {
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: .5%;
+}
+
+.actions button {
+    padding: .5% 1%;
+    border: none;
+    color: black;
+    border-radius: 1em;
+    background: white;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.actions button:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+    transition: .05s;
+}
+
+.actions button:active {
+    transform: translateY(4px);
+    transition: .05s;
+    background: linear-gradient(-40deg, #24acac, lightpink);
+}
+
+.player-infos h3 {
+    margin-top: 1.5%;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: .5%;
+}
+
+.playerstats {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 1%;
+}
+
+.playerstats img {
+    width: 24px;
+    height: 24px;
+    margin-right: 6px;
+}
+
+.playerstats p {
+    display: flex;
+    align-items: center;
+    border-radius: 1em;
+    padding: .5% .75%;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.team-info h3 {
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: .5%;
+}
+
+.teaminfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.teaminfo p {
+    border-radius: 1em;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.teaminfo p .teaminfoname {
+    /* background: linear-gradient(150deg, blue, red); */
+    padding: .2% .5%;
+    border-radius: 1em;
+}
+
+.teaminforang {
+    color: red;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.teaminfoplatz {
+    color: gold;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Partys */
+
+.party-container {
+    width: 100%;
+    height: 100%;
+    border-radius: .75em;
+    padding: .5% 1%;
+    background: linear-gradient(150deg, #635985 40%, #443C68);
+    color: white;
+    position: relative;
+}
+
+.party-container h2 {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.input-ctn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    /* box-shadow: 0px 0px 35px 10px rgba(255, 255, 255, .15), inset 0px 0px 100px 25px rgba(255, 255, 255, .15); */
+}
+
+.input-ctn input {
+    height: 40px;
+    border: 0.125rem solid rgb(204, 204, 204);
+    border-radius: 5px;
+    margin-bottom: 5px;
+    transition: .2s;
+    text-align: center;
+    font-family: Poppins;
+    font-weight: 500;
+    color: rgb(51, 51, 51);
+    font-size: 1.2rem;
+    user-select: none;
+}
+
+.input-ctn input:focus {
+    outline: none;
+    border: 0.125rem solid rgb(51, 51, 51);
+    transition: .2s;
+}
+
+.input-ctn button {
+    height: 40px;
+    background: rgb(51, 51, 51);
+    border: none;
+    border-radius: 5px;
+    font-family: Poppins;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 500;
+    transition: .05s;
+}
+
+.input-ctn button:hover {
+    box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+    transform: translateY(-4px);
+    transition: .05s;
+}
+
+.input-ctn button:active {
+    transform: translateY(8px);
+    transition: .05s;
+}
+
+.oneparty-ctn {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* background: red; */
+}
+
+.top-row {
+    display: flex;
+    width: 100%;
+    height: 5%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-row svg {
+    transition: .2s;
+}
+
+.top-row svg:hover {
+    height: 32px;
+    width: 32px;
+    color: red;
+    transition: .2s;
+}
+
+.allpartymembers {
+    height: 100%;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+}
+
+.member {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    padding-left: 3%;
+    gap: 10px;
+}  
+
+.member img {
+    position: static;
+}
+
+.partyinvitewartenctn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}
+
+.partyinvitewartenctn h2 {
+    text-align: center;
+}

@@ -1,0 +1,36 @@
+{
+    "default": {
+        "head": {
+            "hat": {
+                "index": 0,
+                "variants": ["Roter Fedora", "Grüner Fedora", "Feuerwehrhelm"]
+            },
+            "mask": {
+                "index": 0,
+                "variants": ["Rotes Bandana", "Grünes Bandana", "Skelettmaske"]
+            }
+        },
+        "body": {
+            "shirt": {
+                "index": 0,
+                "variants": ["Oberkörperfrei", "Rotes Shirt", "Grüne Bluse"]
+            },
+            "pullover": {
+                "index": 0,
+                "variants": ["Schwarzer Rollkragenpullover", "Roter Casino Hoodie", "Weißer Pullover"]
+            }
+        },
+        "legs": {
+            "pants": {
+                "index": 0,
+                "variants": ["Enge Anzugshose (Rot)", "Grüne Short", "Pinke Hotpants"]
+            }
+        },
+        "feet": {
+            "shoes": {
+                "index": 0,
+                "variants": ["Lackschuhe", "Turnschuhe", "Sneaker"]
+            }
+        }
+    }
+}
