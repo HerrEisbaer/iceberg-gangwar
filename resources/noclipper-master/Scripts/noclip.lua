@@ -12,7 +12,7 @@ MOVE_UP_DOWN = 31
 NOCLIP_TOGGLE_KEY = 289
 NO_CLIP_NORMAL_SPEED = 0.5
 NO_CLIP_FAST_SPEED = 2.5
-ENABLE_TOGGLE_NO_CLIP = true
+ENABLE_TOGGLE_NO_CLIP = false
 ENABLE_NO_CLIP_SOUND = true
 
 local eps = 0.01
@@ -268,7 +268,11 @@ Citizen.CreateThread(function()
             ToggleNoClipMode()
         end)
 
-        RegisterKeyMapping("toggleNoClip", "Toggles no-clipping", "keyboard", "F2");
+        -- RegisterKeyMapping("toggleNoClip", "Toggles no-clipping", "keyboard", "F2");
     end
 
+end)
+
+AddEventHandler('gotonoclipyasalamesonststich', function ()
+    ToggleNoClipMode()
 end)

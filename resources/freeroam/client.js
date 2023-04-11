@@ -41,10 +41,27 @@ function switchFrakmenu(action) {
 RegisterNuiCallbackType('getUserStats')
 
 on('__cfx_nui:getUserStats', (data, cb) => {
-    emitNet('sendUserstats')
-    onNet('cbUserstats', cb)
-    return
+  TriggerNetServerCallback("sendUserstats", (level) => {
+    cb(level)
+  })
+  return;
 })
+
+// on('__cfx_nui:getDiscordId', (data, cb) => {
+//   TriggerServerCallback("getDiscordId", (discordid) => {
+//     cb(discordid || false)
+//   })
+// })
+
+function TriggerNetServerCallback(name, cbFunction, ...args) {
+  const lol = GetPlayerServerId(PlayerId())
+  const event = (data) => {
+    cbFunction(data);
+    removeEventListener(`boergie__cbnet__response_${name}_${lol}`, event);
+  }
+  onNet(`boergie__cbnet__response_${name}_${lol}`, event)
+  emitNet(`boergie__cb_${name}`, args)
+}
 
 RegisterNuiCallbackType('openedClothing')
 
@@ -55,6 +72,7 @@ on('__cfx_nui:openedClothing', (data, cb) => {
   SetCamFov(GetRenderingCam(), 130);
   FreezePedCameraRotation(PlayerPedId());
   DisplayRadar(false);
+  cb(true);
   return;
 })
 
@@ -93,6 +111,7 @@ on('__cfx_nui:setClothing', (data, cb) => {
   SetPedComponentVariation(PlayerPedId(), clothingids[data.type], cloth.index.clothing, cloth.index.variation, GetNumberOfPedDrawableVariations(PlayerPedId(), cloth.index.clothing))
   if (data.arms != null) SetPedComponentVariation(PlayerPedId(), 3, data.arms, 0, GetNumberOfPedDrawableVariations(PlayerPedId(), data.arms))
   if (data.shirt != null) SetPedComponentVariation(PlayerPedId(), 8, data.shirt, 0, GetNumberOfPedDrawableVariations(PlayerPedId(), data.shirt))
+  cb(true);
   return;
 })
 
@@ -121,9 +140,14 @@ var istammedkitziehen = false;
 var istamrepen = false;
 var repenabg = false;
 
+var latestCar;
+
 setInterval(() => {
   StatSetInt(GetHashKey("MP0_STAMINA"), 100, true)
   DisableControlAction(0, 140, true)
+  HideHudComponentThisFrame(3)
+  HideHudComponentThisFrame(4)
+  HideHudComponentThisFrame(13)
   if (currentFrak == null) return;
   if (IsControlJustReleased(0, 38) || IsControlJustReleased(0, 45)) {
     currentFrak.coords.carspawner.forEach(coord => {
@@ -131,12 +155,36 @@ setInterval(() => {
       const dist = GetDistanceBetweenCoords(playercoords[0], playercoords[1], playercoords[2], coord.coords[0], coord.coords[1], coord.coords[2] - 1, true)
       if (dist <= 1.5) {
         if (IsControlJustReleased(0, 45)) {
-          console.log("respawn last vehicle");
+          if (!latestCar) {
+            emit('addNotify', "Fehler", "Aktuell ist kein letztes Fahrzeug von dir gespeichert.");
+            return;
+          }
+          let found = false;
+          for (let i = 0; i < currentFrak.coords.carspawns.length; i++) {
+            if (found) return;
+            const spawn = currentFrak.coords.carspawns[i];
+            if (!checkForCar(spawn.coords, 3)) {
+              found = true;
+              spawnCarAtFrak(latestCar, spawn.coords, spawn.heading);
+              return;
+            }
+          }
+          spawnCarAtFrak(latestCar)
         } else {
           SetNuiFocus(true, true);
           SendNuiMessage(JSON.stringify({ type: 'openCar' }))
           SendNuiMessage(JSON.stringify({ type: 'hideHUD' }))
         }
+      }
+    })
+  }
+  if (IsControlJustReleased(0, 289)) {
+    TriggerServerCallback("getIfAllowedForNoclip", (darferdas) => {
+      if (!darferdas) {
+        emit('addNotify', "Fehler", "Dafür hast du keine Rechte.");
+        return
+      } else {
+        emit('gotonoclipyasalamesonststich')
       }
     })
   }
@@ -152,7 +200,6 @@ setInterval(() => {
     if (IsControlJustReleased(0, 82)) {
       if (istamwesteziehen || istammedkitziehen || istamrepen) return;
       if (IsPedInAnyVehicle(PlayerPedId())) return;
-      console.log(GetEntityHeightAboveGround(PlayerPedId()));
       if (GetEntityHeightAboveGround(PlayerPedId()) > 1.1) return;
       istammedkitziehen = true;
       medkitziehen();
@@ -195,7 +242,7 @@ setInterval(() => {
       DisableControlAction(0, 288,  true); 
       DisableControlAction(0, 289, true); 
       DisableControlAction(0, 170, true); 
-      DisableControlAction(0, 167, true); 
+      DisableControlAction(0, 167, true);
       DisableControlAction(1, 254, true);
       DisableControlAction(0, 47, true);  
     }
@@ -207,10 +254,10 @@ setInterval(() => {
 }, 1);
 
 // function loadAnimDict(dict)
-// 	while (not HasAnimDictLoaded(dict)) do
+// 	while (not HasAnimDictLoaded(dict)) {
 // 		RequestAnimDict(dict)
 // 		Citizen.Wait(5)
-// 	end
+// 	}
 
 async function loadAnimDict(dict) {
   while (!HasAnimDictLoaded(dict)) {
@@ -268,11 +315,11 @@ async function carrepen() {
 RegisterNuiCallbackType('spawnCar')
 
 on('__cfx_nui:spawnCar', (data, cb) => {
-  console.log("hehe");
   if (data == null) {
     SetNuiFocus(false, false);
-    SendNuiMessage(JSON.stringify({ type: 'showHUD' }))
+    // SendNuiMessage(JSON.stringify({ type: 'showHUD' }))
     // emit('showHUD')
+    cb(true);
     return
   }
   if (data.car.level <= data.stats.level.level) {
@@ -282,9 +329,15 @@ on('__cfx_nui:spawnCar', (data, cb) => {
       const spawn = currentFrak.coords.carspawns[i];
       if (!checkForCar(spawn.coords, 3)) {
         found = true;
-        spawnCarAtFrak(data.car.spawnname, spawn.coords, spawn.heading)
+        spawnCarAtFrak(data.car.spawnname, spawn.coords, spawn.heading);
+        latestCar = data.car.spawnname;
+        // emitNet("spawnCarServerSide", {
+        //   name: data.car.spawnname,
+        //   coords: spawn.coords, 
+        //   heading: spawn.heading,
+        // })
         SetNuiFocus(false, false);
-        SendNuiMessage(JSON.stringify({ type: 'showHUD' }))
+        // SendNuiMessage(JSON.stringify({ type: 'showHUD' }))
         // emit('showHUD')
         cb(true)
         return
@@ -309,6 +362,7 @@ on('__cfx_nui:spawnCar', (data, cb) => {
     // emit('addNotify', "Fahrzeugauswahl", "Dein Level ist zu niedrig!")
     cb(false)
   }
+  cb(true);
   return;
 })
 
@@ -324,14 +378,16 @@ async function spawnCarAtFrak(car, spawn, heading) {
   if (currentCar != null) {
     DeleteEntity(currentCar)
   }
-  currentCar = CreateVehicle(hash, spawn[0], spawn[1], spawn[2], heading);
-  // SetVehicleColours(currentCar, currentFrak.car.primaryColor, currentFrak.car.secondaryColor)
+  currentCar = CreateVehicle(hash, spawn[0], spawn[1], spawn[2], heading, true, true);
   SetVehicleCustomPrimaryColour(currentCar, currentFrak.car.primaryColor[0], currentFrak.car.primaryColor[1], currentFrak.car.primaryColor[2])
   SetVehicleCustomSecondaryColour(currentCar, currentFrak.car.secondaryColor[0], currentFrak.car.secondaryColor[1], currentFrak.car.secondaryColor[2]);
   // SetVehicleMod(currentCar, 13, 2);
   // SetVehicleMod(currentCar, 15, 3);
   // SetVehicleMod(currentCar, 11, 2);
   // SetVehicleMod(currentCar, 12, 2);
+  TriggerServerCallback('getUsername', (username) => {
+    SetVehicleNumberPlateText(currentCar, username);  
+  })
   SetPedIntoVehicle(PlayerPedId(), currentCar, -1)
 }
 
@@ -355,7 +411,26 @@ on('__cfx_nui:leaveFrakNUI', (data, cb) => {
   emit('giveweapons')
   emit('fireshowplayertags');
   emitNet('sobisschenfrakdingens', currentFrak.name)
+  emitNet('checkIfOtherSollenGezogenWerden');
+  if (data.donotcb) return;
   cb(true)
+  return;
+})
+
+onNet('setFrak', (data, cb) => {
+  currentFrak = data.frak;
+  freeroam = true;
+  SetEntityCoords(PlayerPedId(), currentFrak.coords.playerspawn[0].coords[0], currentFrak.coords.playerspawn[0].coords[1], currentFrak.coords.playerspawn[0].coords[2], true, true, false, false);
+  SetEntityHeading(PlayerPedId(), currentFrak.coords.playerspawn[0].heading)
+  spawnNPCs(GetHashKey("s_m_m_gardener_01"))
+  FreezeEntityPosition(PlayerPedId(), false);
+  SetPedArmour(PlayerPedId(), 100);
+  DisplayRadar(true);
+  SetNuiFocus(false, false);
+  emit('showHUD')
+  emit('giveweapons')
+  emit('fireshowplayertags');
+  emitNet('sobisschenfrakdingens', currentFrak.name)
   return;
 })
 

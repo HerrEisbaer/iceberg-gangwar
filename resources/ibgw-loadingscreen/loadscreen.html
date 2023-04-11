@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="html/main.css">
+    <script src="html/main.js" defer></script>
+    <title>IBGW - Loadingscreen</title>
+</head>
+<body>
+    <audio autoplay>
+        <source type="audio/mp3" src="http://localhost:42069/loadingscreen/drifting90s.mp3">
+    </audio>
+    <video muted autoplay poster="html/img/vorschaubild.png">
+        <source type="video/mp4" src="http://localhost:42069/loadingscreen/drifting90s.mp4">
+    </video>
+
+    <div class="volume">
+        <img src="html/img/sound.png" width="32px" height="32px">
+        <input type="range" min="0" max="100" step="1">
+    </div>
+
+    <div class="container">
+        <div class="ibgw">
+            <h1>Iceberg Gangwar</h1>
+            <h2>Willkommen zurück,</h2>
+            <h2 class="user"><img src="https://cdn.discordapp.com/avatars/622437707905237014/019602c610ac1acac0af72daf54e9127.webp?size=80" width="40px" height="40px">Boergie</h2>
+        </div>
+        <div class="uhrzeit">
+            <h2>Es ist</h2>
+            <h2 id="uhrzeith2"></h2>
+        </div>
+        <div class="news">
+            <h2>News</h2>
+            <div class="newsctn"></div>
+        </div>
+    </div>
+
+    <a class="credits">By: D.M.G Media</a>
+
+    <template id="newstem">
+        <div class="single-news">
+            <h3>SexRP</h3>
+            <p>08.04.23</p>
+        </div>
+    </template>
+</body>
+</html>

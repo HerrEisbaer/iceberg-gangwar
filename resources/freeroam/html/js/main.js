@@ -587,6 +587,7 @@ async function openCarAuswahl() {
         if (e.key === 'Escape') {
             fetch('https://freeroam/spawnCar')
             document.querySelector(".carauswahlsec").style.display = 'none';
+            document.getElementById("viptem")?.remove();
         }
         document.removeEventListener('keydown', wehfunction2);
     }
@@ -594,6 +595,24 @@ async function openCarAuswahl() {
     document.addEventListener('keydown', wehfunction2)
 
     const cars = await fetch('../../cars.json').then(resp => resp.json())
+
+    const userstats = await fetch(`https://${GetParentResourceName()}/getUserStats`).then(res => res.json());
+
+    const ownid = await fetch('https://ibgw-manager/getDiscordId').then(res => res.json());
+    const perms = await fetch('http://localhost:42069/database/getPermLevel', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify({
+            discord: ownid
+        })
+    }).then(res => res.json());
+
+    const viptem = document.getElementById("vipcarcontainertem");
+    if (perms.groups.includes("vip") || perms.rechte >= 4) {
+        document.querySelector(".carauswahl-container").append(viptem.content.cloneNode(true).children[0]);
+    }
 
     cars.forEach(async car => {
         const newcarholder = carholdertem.content.cloneNode(true).children[0]
@@ -603,9 +622,8 @@ async function openCarAuswahl() {
         newcarholder.querySelector(".stats").children[1].querySelector(".statbar").setAttribute("statvalue", car.stats.speed.toString())
         newcarholder.querySelector(".stats").children[2].querySelector(".statbar").setAttribute("statvalue", car.stats.handling.toString())
 
-        const userstats = await fetch(`https://${GetParentResourceName()}/getUserStats`).then(res => res.json());
-
         newcarholder.querySelector(".exitcar").addEventListener('click', () => {
+            document.getElementById("viptem")?.remove();
             fetch('https://freeroam/spawnCar', {
                 method: 'POST',
                 headers: {
@@ -633,6 +651,10 @@ async function openCarAuswahl() {
             case "bike":
                 bikesec.append(newcarholder)
                 break
+        }
+
+        if ((perms.groups.includes("vip") || perms.rechte >= 4) && car.type === "vip") {
+            document.getElementById("viptem").querySelector(".carcontainer").append(newcarholder);
         }
     })
 

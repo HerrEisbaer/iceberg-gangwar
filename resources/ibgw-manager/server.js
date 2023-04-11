@@ -4,28 +4,61 @@ var sha256 = require("sha256");
 const User = require('./schemas/User');
 const Frak = require('./schemas/Frak');
 
+const fetch = require('node-fetch');
+
 mongoose.set("strictQuery", false);
 
 mongoose.connect("mongodb+srv://boergie:DzH6eeAABhtV5xqM@cluster0.cb0auxa.mongodb.net/?", () => {
     console.log("Connection to Database succesfully established.");
 }, e => console.error(`Couldn't connect to Database: ${e}`))
 
-const allidentifiers = {};
 
 on('playerConnecting', (name, setKickReason, deferrals) => {
+    const allidentifiers = {};
     deferrals.defer()
     const player = source;
-    setTimeout(() => {
+    setTimeout(async () => {
+        const apistatus = await fetch('http://localhost:42069/ok').then(res => res.json()).catch(e => {
+            console.log("api down", e);            
+        });
+        if (!apistatus) {
+            deferrals.done("Couldn't connect to API. This is an Issue by IBGW. Report this Issue on our Discord.")
+            return;
+        };
         deferrals.update(`Hello ${name}. Your steam ID is being checked.`)
         for (let i = 0; i < GetNumPlayerIdentifiers(player); i++) {
             const identifier = GetPlayerIdentifier(player, i);
             allidentifiers[identifier.split(':')[0]] = identifier.split(':')[1];
         }
-        setTimeout(() => {
-            if (allidentifiers.steam === null || allidentifiers.discord === null) {
+        setTimeout(async () => {
+            if (allidentifiers.steam == null || allidentifiers.discord == null) {
                 deferrals.done(`You are either not connected to Steam or to Discord: Steam: ${allidentifiers.steam}, Discord: ${allidentifiers.discord}`)
             } else {
-                deferrals.done()
+                deferrals.update(`Discord (${allidentifiers.discord}) is being checked.`)
+                const istaufdc = await fetch(`http://localhost:42069/discordapi/getuser/${GetPlayerIdentifier(player, 2).split(":")[1]}`).then(res => res.json());
+                if (istaufdc.status === 400) {
+                    deferrals.done("Your connected Discord Account hasn't joined our Discord Server.")
+                    return;
+                }
+                setTimeout(async () => {
+                    const perms = await fetch('http://localhost:42069/database/getPermLevel', {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json; charset=UTF-8',
+                        },
+                        body: JSON.stringify({
+                            fivem: GetPlayerIdentifier(player, 1).split(":")[1]
+                        })
+                    }).then(res => res.json());
+                    if (!(perms.rechte >= 5)) {
+                        deferrals.done("You're not whitelisted.")
+                        console.log("vollrp");
+                        return;
+                    } else {
+                        console.log("keinrp");
+                        deferrals.done()
+                    }
+                }, 0);
             }
         }, 0)
     }, 0)
@@ -40,6 +73,26 @@ onNet('logUserIn', async data => {
         const neueSuche = await User.findOne({ "userinfo.identifiers.fivem": GetPlayerIdentifier(player, 1).split(":")[1]})
         if (neueSuche == null) {
             //Alert mit Eingabe
+            const wehSuche = await User.findOne({ "userinfo.name": { $regex : new RegExp(data.username, "i") } });
+            if (wehSuche) {
+                emitNet('loginCompletet', player, { loggedin: false, error: "Es existiert schon ein Account mit dem Namen." });
+                return;
+            }
+            const steamsuche = await User.findOne({ "userinfo.identifiers.steam": GetPlayerIdentifier(player, 0).split(":")[1]});
+            if (steamsuche) {
+                emitNet('loginCompletet', player, { loggedin: false, error: "Es existiert schon ein Account mit dem Steam Identifier. Wende dich an den Support." });
+                return;
+            }
+            const discordsuche = await User.findOne({ "userinfo.identifiers.discord": GetPlayerIdentifier(player, 2).split(":")[1]});
+            if (discordsuche) {
+                emitNet('loginCompletet', player, { loggedin: false, error: "Es existiert schon ein Account mit dem Discord Identifier. Wende dich an den Support." });
+                return;
+            }
+            const istaufdc = await fetch(`http://localhost:42069/discordapi/getuser/${GetPlayerIdentifier(player, 2).split(":")[1]}`).then(res => res.json());
+            if (istaufdc.status === 400) {
+                emitNet('loginCompletet', player, { loggedin: false, error: "Du musst unserem Discord beitreten." });
+                return;
+            }
             const newUser = new User({
                 userinfo: {
                     name: data.username,
@@ -48,9 +101,9 @@ onNet('logUserIn', async data => {
                     latestLogin: new Date(),
                     password: sha256(data.password),
                     identifiers: {
-                        fivem: allidentifiers.fivem,
-                        steam: allidentifiers.steam,
-                        discord: allidentifiers.discord
+                        fivem: GetPlayerIdentifier(player, 1).split(":")[1],
+                        steam: GetPlayerIdentifier(player, 0).split(":")[1],
+                        discord: GetPlayerIdentifier(player, 2).split(":")[1]
                     }
                 },
                 stats: {
@@ -124,12 +177,31 @@ async function getPlayer() {
     return await User.findOne({ "userinfo.identifiers.fivem": GetPlayerIdentifier(player, 1).split(":")[1]})
 }
 
-onNet('sendUserstats', async () => {
+// onNet('sendUserstats', async () => {
+//     const player = source;
+//     const userstats = await getPlayer();
+//     emitNet('cbUserstats', player, userstats._doc.stats)
+//     return;
+// })
+
+RegisterServerCallback("sendUserstats", async (source) => {
     const player = source;
     const userstats = await getPlayer();
-    emitNet('cbUserstats', player, userstats._doc.stats)
-    return;
+    return userstats._doc.stats;
 })
+
+RegisterNetServerCallback("sendUserstats", async (source) => {
+    const player = source;
+    const userstats = await getPlayer();
+    return userstats._doc.stats;
+})
+
+function RegisterNetServerCallback(name, soFunction) {
+    const eventData = onNet(`boergie__cb_${name}`, async (...args) => {
+        const player = source;
+        emitNet(`boergie__cbnet__response_${name}_${player.toString()}`, player, await soFunction(player))
+    })
+}
 
 // Frakcreator
 
@@ -170,7 +242,6 @@ onNet('sendUserSettings', async () => {
 //so globale variablen was so jeder braucht und so
 
 const Playercount = require('./schemas/Playercount');
-const fetch = require('node-fetch');
 const DurchschnittSchema = require('./schemas/Durschnitt');
 
 setInterval(async () => {
@@ -251,3 +322,7 @@ function RegisterServerCallback(name, soFunction) {
         emitNet(`boergie__cb${GetCurrentResourceName()}__response_${name}_${player.toString()}`, player, await soFunction(player))
     })
 }
+
+onNet('sowehrestart', () => {
+    emit("restart:checkreboot")
+})

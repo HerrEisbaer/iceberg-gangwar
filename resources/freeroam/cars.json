@@ -53,5 +53,16 @@
             "speed": 80,
             "handling": 90
         }
+    },
+    {
+        "name": "Krieger",
+        "spawnname": "krieger",
+        "type": "vip",
+        "level": 0,
+        "stats": {
+            "acceleration": 90,
+            "speed": 90,
+            "handling": 100
+        }
     }
 ]

@@ -290,6 +290,47 @@
                 <input type="number" id="partyidinput" placeholder="Party ID" min="0">
                 <button id="partyidbtn">Beitreten</button>
             </div>
+            <div class="createparty-ctn">
+                <button id="createpartybtn">Erstellen</button>
+            </div>
+        </div>
+    </template>
+
+    <template id="createpartytemplate">
+        <div class="createpartyctn">
+            <div class="toprow">
+                <h2>Party erstellen</h2>
+                <button id="createpartyfinally">Party Erstellen</button>
+            </div>
+            <div class="otherpartycrcontent">
+                <div class="partysettings">
+                    <h2>Settings</h2>
+                    <div class="partycontent"></div>
+                </div>
+                <div class="preInvitectn">
+                    <h2>Pre Invites</h2>
+                    <div class="partycontent">
+                        <input type="text" id="preinvitesearch">
+                    </div>
+                </div>
+                <div class="createParty">
+                    <h2>Blockieren</h2>
+                    <div class="partycontent">
+                        <input type="text" id="blocksearch">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="partysettingtem">
+        <div class="partysetting">
+            <p></p>
+            <div class="partysettingbtn">
+                <input type="checkbox" class="checkbox"/>
+                <div class="knobs"><span></span></div>
+                <div class="layer"></div>
+            </div>
         </div>
     </template>
 
@@ -302,7 +343,9 @@
     <template id="onepartytem">
         <div class="oneparty-ctn">
             <div class="top-row">
-                <h2>Party von scufzziiiii</h2>
+                <h2 class="toprowh2">
+                    <button id="deleteParty">Party löschen</button>
+                </h2>
                 <svg class="leavepartysvg" version="1.0" xmlns="http://www.w3.org/2000/svg"
                     width="26px" height="26px" viewBox="0 0 512.000000 512.000000"
                     preserveAspectRatio="xMidYMid meet">
@@ -331,16 +374,29 @@
                     </g>
                 </svg>
             </div>
-            <div class="allpartymembers">
-                <div class="member">
-                    <img src="https://cdn.discordapp.com/avatars/859436564047331369/442e94d3631fac40b3c38aa64705243b.png?size=1024">
-                    <div class="text">
-                        <h3>Eisbörg</h3>
-                        <p>Vagos</p>
-                    </div>
-                </div>
+            <div class="allpartycontent">
+                <div class="memberliste"></div>
             </div>
         </div>
+    </template>
+
+    <template id="pownertemplate">
+        <div class="pownerzeugs">
+            <div class="partyinvites">
+                <input type="text" id="pownerinviteinput" placeholder="Name to Invite">
+                <button id="pownerinvitebtn">Invite</button>
+            </div>
+            <div class="partyblock">
+                <input type="text" id="pownerblockinput" placeholder="Name to Block">
+                <button id="pownerblockbtn">Block</button>
+            </div>
+            <div class="partysettingsctn"></div>
+            <div class="partyblocked"></div>
+        </div>
+    </template>
+
+    <template id="onepartysettings">
+        <div class="onepartysettingsctn"></div>
     </template>
 
     <template id="idtem">
@@ -348,6 +404,16 @@
             <img>
             <h3>Eisbörg</h3>
             <p>Vagos</p>
+        </div>
+    </template>
+
+    <template id="partymembertem">
+        <div class="member">
+            <img src="https://cdn.discordapp.com/avatars/859436564047331369/442e94d3631fac40b3c38aa64705243b.png?size=1024">
+            <div class="text">
+                <h3>Eisbörg</h3>
+                <p>Vagos</p>
+            </div>
         </div>
     </template>
 

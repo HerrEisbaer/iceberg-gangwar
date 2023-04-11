@@ -619,7 +619,7 @@ body {
     transition: .2s;
 }
 
-.input-ctn button {
+.input-ctn button, #createpartybtn, #createpartyfinally, #pownerinvitebtn, #pownerblockbtn {
     height: 40px;
     background: rgb(51, 51, 51);
     border: none;
@@ -631,13 +631,13 @@ body {
     transition: .05s;
 }
 
-.input-ctn button:hover {
+.input-ctn button:hover, #createpartybtn:hover, #createpartyfinally:hover, #pownerinvitebtn:hover, #pownerblockbtn:hover {
     box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
     transform: translateY(-4px);
     transition: .05s;
 }
 
-.input-ctn button:active {
+.input-ctn button:active, #createpartybtn:active, #createpartyfinally:active, #pownerinvitebtn:active, #pownerblockbtn:active {
     transform: translateY(8px);
     transition: .05s;
 }
@@ -647,7 +647,6 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    /* background: red; */
 }
 
 .top-row {
@@ -669,11 +668,13 @@ body {
     transition: .2s;
 }
 
-.allpartymembers {
+.allpartycontent {
     height: 100%;
-    width: 25%;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .member {
@@ -699,4 +700,313 @@ body {
 
 .partyinvitewartenctn h2 {
     text-align: center;
+}
+
+.createparty-ctn {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+#createpartybtn {
+    padding: 0 1%;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+#createpartybtn:active {
+    transform: translateY(4px);
+}
+
+.createpartyctn {
+    height: 100%;
+    width: 100%;
+}
+
+.createpartyctn .toprow {
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#createpartyfinally {
+    width: 30%;
+}
+
+.otherpartycrcontent {
+    width: 100%;
+    height: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1%;
+}
+
+.partysettings, .preInvitectn, .createParty {
+    height: 90%;
+    width: 33%;
+    /* background: red; */
+}
+
+.partysettings h2, .preInvitectn h2, .createParty h2 {
+    text-align: center;
+}
+
+.partycontent {
+    display: flex;
+    justify-content: top;
+    align-items: center;
+    padding: 3%;
+    flex-direction: column;
+    gap: 6px;
+    border: 2px solid white;
+    border-radius: .4em;
+    height: 94%;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+  
+::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 1em;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: gray;
+}
+
+.partysetting {
+    width: 70%;
+    height: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#preinvitesearch, #blocksearch, #pownerinviteinput, #pownerblockinput {
+    height: 40px;
+    width: 100%;
+    border: 0.125rem solid rgb(255, 255, 255);
+    background: none;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    transition: .2s;
+    text-align: center;
+    font-family: Poppins;
+    font-weight: 500;
+    color: white;
+    font-size: 1.2rem;
+    user-select: none;
+}
+
+#preinvitesearch:focus, #blocksearch:focus, #pownerinviteinput:focus, #pownerblockinput:focus {
+    outline: none;
+    border: 0.125rem solid rgb(51, 51, 51);
+    transition: .2s;
+}
+
+.partycontent .member:hover {
+    cursor: pointer;
+    color: red;
+}
+
+/* .createParty .partycontent {
+   justify-content: flex-end;
+} */
+
+/* #createpartyfinally {
+    width: 100%;
+} */
+
+#createpartyfinally:active {
+    transform: translateY(4px);
+}
+
+#createpartyfinally {
+    background: #2b2b2b;
+}
+
+.knobs, .layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+  
+.partysettingbtn {
+    position: relative;
+    width: 70px;
+    height: 30px;
+}
+  
+.checkbox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 3;
+}
+  
+.layer {
+    border-radius: .5em;
+    border: 1px solid white;
+    transition: 0.3s ease all;
+}
+
+.partysettingbtn .knobs span {
+    position: absolute;
+    transition: 0.3s ease all;
+}
+  
+.partysettingbtn .knobs span {
+    width: 28px;
+    height: 22px;
+    left: 36px;
+    top: 4px;
+    background-color: white;
+    border-radius: .5em;
+    z-index: 2;
+}
+  
+.partysettingbtn .checkbox:checked + .knobs span {
+    left: 6px;
+    background-color: rgba(255, 30, 30);
+}
+
+.onepartysettingsctn {
+    width: 100%;
+    height: 100%;
+}
+
+.toprowh2 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 1%;
+}
+
+.toprowh2 button {
+    padding: .5% 1%;
+    border: none;
+    color: black;
+    border-radius: 1em;
+    background: white;
+    font-size: 14px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.toprowh2 button:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+    transition: .05s;
+}
+
+.toprowh2 button:active {
+    transform: translateY(4px);
+    transition: .05s;
+    background: linear-gradient(-40deg, #24acac, lightpink);
+}
+
+.allpartycontent {
+    /* background: red; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.memberliste {
+    height: 100%;
+    width: 25%;
+    /* background: blue; */
+    display: flex;
+    flex-direction: column;
+    gap: 1%;
+    padding: 1% 1% 1% 0;
+}
+
+.memberliste.owner .member:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.pownerzeugs {
+    height: 100%;
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(2, 50%);
+    padding: .5%;
+}
+
+.pownerzeugs div {
+    height: 100%;
+}
+
+.partyinvites {
+    /* background: red; */
+    grid-column: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1%;
+    /* border: 1px solid white; */
+}
+
+.partyinvites .member, .partyblock .member, .partyblocked .member {
+    height: 15%;
+}
+
+.partyinvites .member:hover, .partyblock .member:hover, .partyblocked .member:hover {
+    color: red;
+    cursor: pointer;
+}
+
+#pownerinvitebtn {
+    width: 100%;
+}
+
+.partyblock {
+    /* background: orange; */
+    grid-column: 2 / -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1%;
+}
+
+.partysettingsctn {
+    /* background: blue; */
+    grid-column: 1 / 1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+    padding: 1%;
+}
+
+.partysettingsctn .partysetting {
+    height: 8.5%;
+    width: 100%;
+}
+
+.partyblocked {
+    grid-column: 2 / -1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+    padding: 1%;
 }

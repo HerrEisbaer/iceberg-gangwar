@@ -193,6 +193,7 @@ body {
     color: white;
     animation: slideintop .5s;
     padding: .5%;
+    text-align: center;
 }
 
 .alert-container h2 {

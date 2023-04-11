@@ -12,22 +12,24 @@ on('onClientGameTypeStart', () => {
       x: currentFrak.coords.playerspawn[0].coords[0],
       y: currentFrak.coords.playerspawn[0].coords[1],
       z: currentFrak.coords.playerspawn[0].coords[2],
-      model: 'mp_m_freemode_01'
+      model: 'mp_m_freemode_01',
+      skipFade: true
     }, () => {
       if (currentFrak.outfits == null) {
           SetPedDefaultComponentVariation(PlayerPedId());
           FreezeEntityPosition(PlayerPedId(), true);
           SetEntityHeading(PlayerPedId(), 165);
           emit('openLogin')
+          ShutdownLoadingScreenNui();
           return
       }
       setClothing({
           clothing: currentFrak.outfits,
           shirt: currentFrak.outfits.body.shirt[0][0]
       })
-      GiveWeaponsToPlayer()
+      GiveWeaponsToPlayer();
       SetPedArmour(PlayerPedId(), 100);
-      emit('showHUD')
+      emit('showHUD');
       emit('fireshowplayertags');
     })
   });
@@ -95,8 +97,11 @@ on('__cfx_nui:getPlayerID', (data, cb) => {
 RegisterNuiCallbackType('getUserStats')
 
 on('__cfx_nui:getUserStats', (data, cb) => {
-  emitNet('sendUserstats')
-  onNet('cbUserstats', cb)
+  TriggerServerCallback('sendUserstats', (stats) => {
+    cb(stats)
+  })
+  // emitNet('sendUserstats')
+  // onNet('cbUserstats', cb)
   return
 })
 
@@ -195,3 +200,7 @@ function TriggerServerCallback(name, cbFunction, ...args) {
 //   exports.spawnmanager.forceRespawn()
 //   startUp()
 // });
+
+RegisterCommand('wehrestart', (source, args, raw) => {
+  emitNet('sowehrestart')
+}, false);

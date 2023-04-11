@@ -42,6 +42,76 @@ RegisterServerCallback('getIfPlayerIsAdmin', function (source) {
 function RegisterServerCallback(name, soFunction) {
     const eventData = onNet(`boergie__cb_${name}`, async (...args) => {
         const player = source;
-        emitNet(`boergie__cb__response_${name}_${player.toString()}`, player, soFunction(player))
+        emitNet(`boergie__cb__response_${name}_${player.toString()}`, player, await soFunction(player))
     })
 }
+
+onNet('spawnCarServerSide', data => {
+    const player = source;
+    const hash = GetHashKey(data.name)
+    // if (!IsModelInCdimage(hash)) return
+    // RequestModel(hash)
+    // while (!HasModelLoaded(hash)) {
+    //     await Delay(100);
+    // }
+    // if (currentCar != null) {
+    //     DeleteEntity(currentCar)
+    // }
+    const currentCar = CreateVehicle(hash, data.coords[0], data.coords[1], data.coords[2], data.heading);
+    TaskWarpPedIntoVehicle(GetPlayerPed(player), currentCar, -1)
+    // SetVehicleColours(currentCar, currentFrak.car.primaryColor, currentFrak.car.secondaryColor)
+    // SetVehicleCustomPrimaryColour(currentCar, currentFrak.car.primaryColor[0], currentFrak.car.primaryColor[1], currentFrak.car.primaryColor[2])
+    // SetVehicleCustomSecondaryColour(currentCar, currentFrak.car.secondaryColor[0], currentFrak.car.secondaryColor[1], currentFrak.car.secondaryColor[2]);
+    // SetVehicleMod(currentCar, 13, 2);
+    // SetVehicleMod(currentCar, 15, 3);
+    // SetVehicleMod(currentCar, 11, 2);
+    // SetVehicleMod(currentCar, 12, 2);
+    // console.log(GetPlayerPed(player), currentCar);
+    // SetPedIntoVehicle(GetPlayerPed(player), currentCar, -1)
+    // TaskWarpPedIntoVehicle(GetPlayerPed(GetPlayerFromServerId(player)), currentCar, -1);
+    // SetPedIntoVehicle(
+    //     // ped: Ped,
+    //     // vehicle: Vehicle, 
+    //     // seatIndex: number
+    // );
+})
+
+const fetch = require('node-fetch');
+
+RegisterServerCallback('getUsername', async (source, args) => {
+    const player = source;
+    const username = (await fetch(`http://localhost:42069/database/getName/${GetPlayerIdentifier(player, 1).split(":")[1]}`).then(res => res.json())).name;
+    console.log(username);
+    return username;
+})
+
+RegisterServerCallback("getIfAllowedForNoclip", async () => {
+    const player = source;
+    const perms = await fetch('http://localhost:42069/database/getPermLevel', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify({
+            fivem: GetPlayerIdentifier(player, 1).split(":")[1]
+        })
+    }).then(res => res.json());
+    return perms.rechte >= 2;
+})
+
+emitNet('askedForNoClip', () => {
+    const player = source;
+
+})
+// Party
+
+// function RegisterNetServerCallback(name, soFunction) {
+//     const eventData = onNet(`boergie__cb_${name}`, async (...args) => {
+//         const player = source;
+//         emitNet(`boergie__cbnet__response_${name}_${player.toString()}`, player, await soFunction(player))
+//     })
+// }
+
+// RegisterNetServerCallback('getAllFraks', async (source) => {
+//     const allFraks = await fetch('./')
+// })

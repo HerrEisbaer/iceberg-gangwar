@@ -5,6 +5,8 @@ version '1.0.0'
 author 'eisboerg'
 description 'Eisboergs Essentials'
 
+shared_script '@pmc-callbacks/import.lua'
+
 client_scripts {
     'client.lua'
 }

@@ -81,3 +81,16 @@ RegisterCommand('heading', function (source, args, rawCommand)
     print(heading)
     TriggerServerEvent('printcoords', heading)
 end)
+
+RegisterCommand("wehhh", function ()
+    -- TriggerServerEvent('wehhh')
+    local result = TriggerServerCallback {
+        eventName = "deinemutter",
+        args = {'deinemutter', 'sucktcocks'}
+    }
+    print('weh ', result)
+end)
+
+RegisterCommand('vectorenhs', function ()
+    print((GetEntityCoords(PlayerPedId()) * 2 * 2) + GetEntityCoords(PlayerPedId()) * 5 * 2)
+end)

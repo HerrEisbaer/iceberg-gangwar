@@ -30,6 +30,7 @@ on('__cfx_nui:addNotify', (data, cb) => {
         title: data.title,
         text: data.text
     }))
+    cb(true);
 })
 
 onNet('addNotify', (title, text) => {

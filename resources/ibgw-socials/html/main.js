@@ -145,14 +145,162 @@ var signal = controller.signal;
 
 const partytem = document.getElementById("partytem");
 
-function openPartyMenu() {
+var partyMenuOpened = false;
+var partyBefore = false;
+var partyLeft = false;
+var partybeforeOBJ = {};
+
+async function openPartyMenu() {
     allsocials.innerHTML = "";
     allsocials.append(partytem.content.cloneNode(true).children[0]);
 
-    document.getElementById("partyidbtn").addEventListener('click', soAddPartyBtnEvent)
+    partyMenuOpened = true;
+
+    document.getElementById("partyidbtn").addEventListener('click', soAddPartyBtnEvent);
+    document.getElementById("createpartybtn").addEventListener('click', openCreateParty);
+
+    const createpartytemplate = document.getElementById("createpartytemplate");
+
+    function openCreateParty() {
+        const partycontainer = document.querySelector(".party-container");
+
+        partycontainer.innerHTML = "";
+        partycontainer.append(createpartytemplate.content.cloneNode(true).children[0]);
+
+        const settings = {
+            "allowrq": {
+                name: "allowrq",
+                displayName: "Allow Requests",
+                value: true
+            },
+            "allowotherinvites": {
+                name: "allowotherinvites",
+                displayName: "Allow Invites by Others",
+                value: false
+            }
+        }
+
+        const settingtem = document.getElementById("partysettingtem");
+        const settingcontainer = document.querySelector(".partysettings").querySelector(".partycontent");
+
+        for (i = 0; i < Object.keys(settings).length; i++) {
+            const setting = Object.values(settings)[i];
+            const settingctn = settingtem.content.cloneNode(true).children[0];
+
+            settingctn.querySelector("p").innerText = setting.displayName;
+            settingctn.classList.add(setting.name);
+            settingctn.querySelector("input").checked = setting.value;
+            settingcontainer.append(settingctn);
+        }
+
+        const searchbtn = document.getElementById("preinvitesearch");
+        
+        searchbtn.addEventListener("change", async () => {
+            if (searchbtn.value == null || searchbtn.value.trim().length == 0) return;
+            const result = await fetch(`http://localhost:42069/database/userExists/${searchbtn.value}`).then(res => res.json());
+            if (result == false) {
+                addNotify("Fehler", "Der eingebene Name ist falsch.");
+                return;
+            };
+            const index = partymember.indexOf(searchbtn.value);
+            if (index > -1) { addNotify("Fehler", "Du hast diesen User bereits auf der AutoInvite Liste."); return; }
+            const indextwo = blocked.indexOf(searchbtn.value);
+            if (indextwo > -1) { addNotify("Fehler", "Du hast diesen User bereits auf der Block Liste."); return; }
+            addMemberToAutoList(searchbtn.value);
+            searchbtn.value = "";
+        })
+
+        const membertem = document.getElementById("partymembertem");
+        const membercontainer = document.querySelector(".preInvitectn").querySelector(".partycontent");
+
+        const partymember = [];
+        
+        function addMemberToAutoList(name) {
+            const member = membertem.content.cloneNode(true).children[0];
+            member.querySelector("img").src = "https://cdn.discordapp.com/avatars/859436564047331369/442e94d3631fac40b3c38aa64705243b.png?size=1024";
+            member.querySelector("h3").innerText = name;
+
+            member.addEventListener('click', () => {
+                const index = partymember.indexOf(name);
+                if (index > -1) {
+                    partymember.splice(index, 1);
+                }
+                member.remove();
+            })
+
+            partymember.push(name)
+            membercontainer.append(member);
+        }
+
+        const blocked = [];
+
+        const blocksearch = document.getElementById("blocksearch");
+        const blockedcontainer = document.querySelector(".createParty").querySelector(".partycontent");
+
+        blocksearch.addEventListener("change", async () => {
+            if (blocksearch.value == null || blocksearch.value.trim().length == 0) return;
+            const result = await fetch(`http://localhost:42069/database/userExists/${blocksearch.value}`).then(res => res.json());
+            if (result == false) {
+                // fetch(`https://ibgw-hud/addNotify`, {
+                //     method: 'POST',
+                //     body: JSON.stringify({
+                //         title: "Fehler",
+                //         text: "Der eingebene Name ist falsch."
+                //     })
+                // });
+                addNotify("Fehler", "Der eingebene Name ist falsch.");
+                return;
+            };
+            const index = blocked.indexOf(blocksearch.value);
+            if (index > -1) { addNotify("Fehler", "Du hast diesen User bereits auf der Block Liste."); return; }
+            const indextwo = partymember.indexOf(blocksearch.value);
+            if (indextwo > -1) { addNotify("Fehler", "Du hast diesen User bereits auf der AutoInvite Liste."); return; }
+            const member = membertem.content.cloneNode(true).children[0];
+            member.querySelector("img").src = "https://cdn.discordapp.com/avatars/859436564047331369/442e94d3631fac40b3c38aa64705243b.png?size=1024";
+            member.querySelector("h3").innerText = blocksearch.value;
+            
+            const name = blocksearch.value;
+            member.addEventListener('click', () => {
+                const index = blocked.indexOf(name);
+                if (index > -1) {
+                    blocked.splice(index, 1);
+                }
+                member.remove();
+            })
+
+            blocked.push(blocksearch.value)
+            blocksearch.value = "";
+            blockedcontainer.append(member);
+        })
+
+        const partyerstellenbtn = document.getElementById("createpartyfinally");
+
+        partyerstellenbtn.addEventListener("click", async () => {
+            getAllSettings();
+            const ownid = await fetch('https://ibgw-manager/getDiscordId').then(res => res.json());
+            fetch('https://ibgw-socials/createParty', {
+                method: "POST",
+                body: JSON.stringify({
+                    partyobj: {
+                        owner: ownid,
+                        members: [(await fetch(`http://localhost:42069/database/getNameFromDiscord/${ownid}`).then(res => res.json())).name],
+                        blocked: blocked,
+                        autoinvites: partymember,
+                        options: settings
+                    }
+                })
+            })
+        })
+
+        function getAllSettings() {
+            const allOptionElements = document.querySelectorAll(".checkbox");
+            allOptionElements.forEach(element => {
+                settings[element.parentElement.parentElement.classList[1]] = !element.checked;
+            })
+        }
+    }
 
     async function soAddPartyBtnEvent() {
-        // openParty()
         let value = document.getElementById("partyidinput").value;
         value = parseInt(value);
         if (value == null) return;
@@ -171,7 +319,7 @@ function openPartyMenu() {
             const currentState = await fetch(`http://localhost:42069/discordapi/checkIfPartyRequestIsAcceptet/${ownid}`).then(res => res.json());
             if (currentState != acceptet) {
                 setPartyZurückWeilFehler("Party Anfrage angenommen.")
-                openParty();
+                openParty(value);
                 acceptet = true;
             }
         } while (!acceptet);
@@ -206,9 +354,11 @@ function openPartyMenu() {
 
     function setPartyZurückWeilFehler(message) {
         const partycontainer = document.querySelector(".party-container");
-        partycontainer.innerHTML = "";
-        partycontainer.append(partytem.content.cloneNode(true).children[0].querySelector(".input-ctn"));
-        document.getElementById("partyidbtn").addEventListener('click', soAddPartyBtnEvent)
+        if (partycontainer) {
+            partycontainer.innerHTML = "";
+            partycontainer.append(partytem.content.cloneNode(true).children[0].querySelector(".input-ctn"));
+            document.getElementById("partyidbtn").addEventListener('click', soAddPartyBtnEvent)
+        }
         fetch(`https://ibgw-hud/addNotify`, {
             method: 'POST',
             headers: {
@@ -221,19 +371,256 @@ function openPartyMenu() {
         })
     }
 
-    // openParty()
+    const ownid = await fetch('https://ibgw-manager/getDiscordId').then(res => res.json());
+    const ownname = (await fetch(`http://localhost:42069/database/getNameFromDiscord/${ownid}`).then(res => res.json())).name;
+    const partyid = await fetch(`http://localhost:42069/discordapi/getParty/${ownname}`).then(res => res.json());
+
+    if (partyBefore === partyid && partyid) {
+        openParty(partyid);
+    }
+
+    do {
+        const ownid = await fetch('https://ibgw-manager/getDiscordId').then(res => res.json());
+        const ownname = (await fetch(`http://localhost:42069/database/getNameFromDiscord/${ownid}`).then(res => res.json())).name;
+        const partyid = await fetch(`http://localhost:42069/discordapi/getParty/${ownname}`).then(res => res.json());
+        if (partyBefore != partyid) {
+            // if (!partyid) {
+            //     partyMenuOpened = false;
+            //     return;
+            // };
+            if (partyid) {
+                openParty(partyid);
+                partyBefore = partyid;
+            }
+        }
+        await Delay(1000);
+    } while (partyMenuOpened)
 }
 
 const onepartytem = document.getElementById("onepartytem");
 
-function openParty() {
+var singlePartyOpened = false;
+
+async function openParty(partyid) {
     const partycontainer = document.querySelector(".party-container");
     partycontainer.innerHTML = "";
     partycontainer.append(onepartytem.content.cloneNode(true).children[0])
 
+    const party = await fetch(`http://localhost:42069/discordapi/getPartyObject/${partyid}`).then(res => res.json());
+    const ownid = await fetch('https://ibgw-manager/getDiscordId').then(res => res.json());
+
+    const unsertollesh2 = partycontainer.querySelector("h2");
+    unsertollesh2.innerHTML = `${party.members[0]} (${party.party}) ${unsertollesh2.innerHTML}`;
+    // partycontainer.querySelector("h2").append(party.members[0]);
+
+    singlePartyOpened = true;
+
     document.querySelector(".leavepartysvg").addEventListener('click', () => {
-        console.log("Leave Party");
+        if (party.owner === ownid) {
+            addNotify("Fehler", "Du kannst deine eigene Party nicht verlassen.");
+            return;
+        }
     })
+
+    document.getElementById("deleteParty").addEventListener('click', async () => {
+        await fetch(`http://localhost:42069/discordapi/deleteParty/${partyid}/${ownid}`);
+        partyMenuOpened = false;
+        await Delay(1500);
+        allsocials.innerHTML = "";
+        openPartyMenu();
+        // allsocials.append(document.getElementById("overlaytem").content.cloneNode(true).children[0]);
+        // allsocials.append(partytem.content.cloneNode(true).children[0]);
+    })
+
+    const allpartycontent = document.querySelector(".allpartycontent");
+    const membertem = document.getElementById("partymembertem");
+
+    var membersbefore = [];
+
+    async function displayAllMembers(members) {
+        if (membersbefore == members) return;
+        membersbefore = members;
+        const div = document.createElement("div");
+        div.classList.add("memberliste");
+        if (party.owner === ownid) div.classList.add("owner");
+        allpartycontent.append(div);
+        for (const member of members) {
+            const newmeber = membertem.content.cloneNode(true).children[0];
+            newmeber.querySelector("h3").innerText = member;
+            newmeber.querySelector("img").src = (await fetch(`http://localhost:42069/discordapi/getAvatarURL/${ownid}`).then(res => res.json())).url;
+            div.append(newmeber);
+        }
+    }
+
+    async function displayAllBlocked(blocked) {
+        const partyblocked = document.querySelector(".partyblocked");
+        partyblocked.innerHTML = "";
+        if (blocked.length === 0) {
+            partyblocked.append("Keine User geblockt");
+        }
+        for (const block of blocked) {
+            const newmeber = membertem.content.cloneNode(true).children[0];
+            newmeber.querySelector("h3").innerText = block;
+            newmeber.querySelector("img").src = (await fetch(`http://localhost:42069/discordapi/getAvatarURL/${ownid}`).then(res => res.json())).url;
+
+            newmeber.addEventListener('click', async () => {
+                await fetch(`http://localhost:42069/discordapi/unBlockUser/${party.party}/${block}`);
+            })
+
+            partyblocked.append(newmeber);
+        }
+    }
+
+    const settingtem = document.getElementById("partysettingtem");
+
+    const settings = {
+        "allowrq": {
+            name: "allowrq",
+            displayName: "Allow Requests",
+        },
+        "allowotherinvites": {
+            name: "allowotherinvites",
+            displayName: "Allow Invites by Others",
+        }
+    }
+
+    await fetch('https://ibgw-socials/showPartyTags');
+    const ids = (await fetch(`http://localhost:42069/database/getIdsFromDiscord/${ownid}`).then(res => res.json())).ids;
+    if (party.owner === ownid) {
+        await fetch('https://ibgw-socials/warptopartyowner', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8',
+            },
+            body: JSON.stringify(ids)
+        })
+    }
+
+    do {
+        await Delay(1000);
+        const neueParty = await fetch(`http://localhost:42069/discordapi/getPartyObject/${party.party}`).then(res => res.json());
+        const neueMember = neueParty.members;
+        const neueBlocked = neueParty.blocked;
+        if (!neueMember) {
+            await fetch('https://ibgw-socials/partyDeletePlayerTags', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json; charset=UTF-8',
+                },
+                body: JSON.stringify(party)
+            });
+            return;
+        }
+        if (!neueMember.length == party.members.length) {
+            party.members = neueMember;
+            displayAllMembers(neueMember);
+        }
+        if (!neueBlocked.length == party.blocked.length) {
+            party.blocked = neueBlocked;
+            displayAllBlocked(neueBlocked);
+        }
+        if (partybeforeOBJ == party) continue;
+        partybeforeOBJ = party;
+        allpartycontent.innerHTML = "";
+        displayAllMembers(party.members);
+        if (party.owner === ownid) {
+            // console.log("owner", party.options);
+            allpartycontent.append(document.getElementById("pownertemplate").content.cloneNode(true).children[0]);
+            const settingscontainer = document.querySelector(".partysettingsctn");
+            displayAllBlocked(party.blocked);
+            for (i = 0; i < Object.keys(party.options).length; i++) {
+                const value = !Object.values(party.options)[i];
+                const name = Object.keys(party.options)[i];
+
+                const settingctn = settingtem.content.cloneNode(true).children[0];
+
+                settingctn.querySelector("p").innerText = settings[name].displayName;
+                settingctn.classList.add(name);
+                settingctn.querySelector("input").checked = value;
+                settingscontainer.append(settingctn);
+            }
+
+            const inviteinp = document.getElementById("pownerinviteinput");
+            let result;
+            let memberInvite;
+            inviteinp.addEventListener("change", async () => {
+                if (inviteinp.value == null || inviteinp.value.trim().length == 0) return;
+                result = await fetch(`http://localhost:42069/database/userExists/${inviteinp.value}`).then(res => res.json());
+                if (result == false) {
+                    addNotify("Fehler", "Der eingebene Name ist falsch.");
+                    return;
+                };
+                memberInvite = membertem.content.cloneNode(true).children[0];
+                memberInvite.querySelector("img").src = "https://cdn.discordapp.com/avatars/859436564047331369/442e94d3631fac40b3c38aa64705243b.png?size=1024";
+                memberInvite.querySelector("h3").innerText = inviteinp.value;
+    
+                memberInvite.addEventListener('click', () => {
+                    inviteinp.value = "";
+                    memberInvite.remove();
+                })
+                const partyinvites = document.querySelector(".partyinvites");
+                partyinvites.insertBefore(memberInvite, partyinvites.children[1]);
+            })
+
+            const pownerinvitebtn = document.getElementById("pownerinvitebtn");
+            pownerinvitebtn.addEventListener("click", async () => {
+                if (inviteinp.value == null || inviteinp.value.trim().length == 0) return;
+                const identifiers = await fetch(`http://localhost:42069/database/getDiscordFromName/${inviteinp.value}`).then(res => res.json());
+                inviteinp.value = "";
+                memberInvite.remove();
+                await fetch(`http://localhost:42069/discordapi/partyinvite/${party.party}/${identifiers.discord}`);
+            })
+
+            const pownerblockinput = document.getElementById("pownerblockinput");
+            let memberBlock;
+            pownerblockinput.addEventListener("change", async () => {
+                if (pownerblockinput.value == null || pownerblockinput.value.trim().length == 0) return;
+                result = await fetch(`http://localhost:42069/database/userExists/${pownerblockinput.value}`).then(res => res.json());
+                if (result == false) {
+                    addNotify("Fehler", "Der eingebene Name ist falsch.");
+                    return;
+                };
+                memberBlock = membertem.content.cloneNode(true).children[0];
+                memberBlock.querySelector("img").src = "https://cdn.discordapp.com/avatars/859436564047331369/442e94d3631fac40b3c38aa64705243b.png?size=1024";
+                memberBlock.querySelector("h3").innerText = pownerblockinput.value;
+    
+                memberBlock.addEventListener('click', () => {
+                    pownerblockinput.value = "";
+                    memberBlock.remove();
+                })
+                const partyblock = document.querySelector(".partyblock");
+                partyblock.insertBefore(memberBlock, partyblock.children[1]);
+            })
+
+            const pownerblockbtn = document.getElementById("pownerblockbtn");
+            pownerblockbtn.addEventListener("click", async () => {
+                if (pownerblockinput.value == null || pownerblockinput.value.trim().length == 0) return;
+                const name = pownerblockinput.value
+                memberBlock.remove();
+                pownerblockinput.value = "";
+                await fetch(`http://localhost:42069/discordapi/blockUser/${party.party}/${name}`);
+            })
+
+            document.querySelectorAll(".partysetting").forEach(setting => {
+                setting.addEventListener("click", () => {
+                    const checked = setting.querySelector("input").checked;
+                    fetch(`http://localhost:42069/discordapi/setSetting`, {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json; charset=UTF-8',
+                        },
+                        body: JSON.stringify({
+                            setting: {
+                                name: setting.classList[1],
+                                state: !checked
+                            },
+                            partyID: party.party
+                        })
+                    })
+                })
+            })
+        }
+    } while (singlePartyOpened)
 }
 
 const friendtem = document.getElementById("friendtem");
@@ -294,7 +681,6 @@ async function openFriendsMenu() {
         const allUsers = await fetch(`http://localhost:42069/database/getAllUser/${nameToLook.toLowerCase()}`, { method: 'GET', }).then(res => res.json());
         allUsers.forEach(async user => {
             const newusertem = playerergebnissuchetem.content.cloneNode(true).children[0];
-            console.log(user);
             newusertem.querySelector("img").src = (await fetch(`http://localhost:42069/discordapi/getuser/${user.userinfo.identifiers.discord}`).then(res => res.json())).displayAvatarURL;
             const h3 = newusertem.querySelector("h3");
             h3.innerHTML = `${user.userinfo.name}${h3.innerHTML}`;
@@ -404,12 +790,24 @@ function printOtherElements(array, element) {
 // openFriendsMenu();
 // openPartyMenu();
 
+function addNotify(title, text) {
+    fetch(`https://ibgw-hud/addNotify`, {
+        method: 'POST',
+        body: JSON.stringify({
+            title: title,
+            text: text
+        })
+    })
+}
+
 document.addEventListener('keydown', (e) => {
     if (e.key === "Escape") {
         fetch('https://ibgw-socials/leavesocials');
         allsocials.style.display = "none";
         friends = [];
         friendsOpened = false;
+        partyMenuOpened = false;
+        singlePartyOpened = false;
 
         controller.abort();
 

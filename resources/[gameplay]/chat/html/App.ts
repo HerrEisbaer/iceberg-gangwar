@@ -12,10 +12,10 @@ export interface Message {
   params?: { [key: string]: string };
   multiline?: boolean;
   color?: [ number, number, number ];
+  prefixColor?: string;
   templateId?: number;
   mode?: string;
   modeData?: Mode;
-
   id?: string;
 }
 
